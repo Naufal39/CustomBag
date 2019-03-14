@@ -20,4 +20,16 @@ class View extends CI_Controller {
         $this->load->view('pages/kontak');
         $this->load->view('struktur/footer');
     }
+    public function shop(){
+        $this->load->view('struktur/meta');
+        $this->load->view('struktur/header');
+        $this->load->view('pages/shop');
+        $this->load->view('struktur/footer');
+    }
+    public function single(){
+        $this->load->view('struktur/meta');
+        $this->load->view('struktur/header');
+        $this->load->view('pages/shop-single');
+        $this->load->view('struktur/footer');
+    }
 }

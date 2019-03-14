@@ -83,8 +83,8 @@
                 <li><a href="#">Menu Three</a></li>
               </ul>
             </li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="#">Catalogue</a></li>
+            <li><a href="<?php echo base_url('view/shop'); ?>">Shop</a></li>
+            <li><a href="<?php echo base_url('view/about'); ?>">Catalogue</a></li>
             <li><a href="#">New Arrivals</a></li>
             <li><a href="<?php echo base_url('index.php/view/kontak'); ?>">Contact</a></li>
              <li><a href="<?php echo base_url('index.php/welcome/index'); ?>">Login</a></li>
