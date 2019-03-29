@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
     <li class="nav-item <?php echo $this->uri->segment(2) == '' ? 'active': '' ?>">
-        <a class="nav-link" href="<?php echo site_url('admin') ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/overview') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Overview</span>
         </a>
@@ -14,8 +14,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         </div>
-            <a class="dropdown-item" href="<?php echo site_url('admin/products') ?>">List Product</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/products/add') ?>">New Product</a>
+            <a class="dropdown-item" style="color:white;" href="<?php echo site_url('admin/products') ?>">List Product</a>
+            <a class="dropdown-item" style="color:white;" href="<?php echo site_url('admin/products/add') ?>">New Product</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">
