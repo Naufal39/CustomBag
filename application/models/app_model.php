@@ -8,4 +8,5 @@ class App_model extends CI_Model {
         $this->db->where('password', $pass);
         return $this->db->get('tb_user')->row();
     }
+
 }

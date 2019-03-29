@@ -2,6 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
+	public function __construct()
+    {
+		parent::__construct();
+	}
 
 	public function index()
 	{
@@ -21,12 +25,12 @@ class Welcome extends CI_Controller {
 			if ($hasil > 0){
 				$loginData = $this->db->get_where('tb_user', array('username' => $user, 'password' => $pass))->row();
 				if ($loginData->level=='admin'){
-					redirect('welcome/admin');
+					redirect(site_url('admin/overview'));
 				}elseif ($loginData->level=='gudang'){
 					redirect('gudang/index');
 				}
 				elseif ($loginData->level=='kasir'){
-					redirect('welcome/kasir');
+					redirect('kasir/index');
 				}
 			}
 			else{
@@ -36,9 +40,9 @@ class Welcome extends CI_Controller {
 		}
 	}
 
-	public function admin(){
-		$this->load->view('pages/admin/admin');
-	}
+	// public function admin(){
+	// 	$this->load->view("admin/overview");
+	// }
 
 	
 	// public function gudang(){
@@ -48,9 +52,9 @@ class Welcome extends CI_Controller {
 	// }
 
 	
-	public function kasir(){
-		$this->load->view('pages/kasir/kasir');
-	}
+	// public function kasir(){
+	// 	$this->load->view('pages/kasir/kasir');
+	// }
 
 	public function logout(){
 		$this->session->sess_destroy();
