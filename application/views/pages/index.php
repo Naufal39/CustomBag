@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+    <title>CustomBag &mdash; Finding Your Perfect Bag</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -16,7 +16,7 @@
           <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
             <h1 class="mb-2">Finding Your Perfect Bag</h1>
             <div class="intro-text text-center text-md-left">
-              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
+              <p class="mb-4">Sekarang anda bisa memilih model, bahan, dan kualitasnya sesuka hati anda. Custom Now! </p>
               <p>
                 <a href="#" class="btn btn-sm btn-primary">Custom Now</a>
               </p>

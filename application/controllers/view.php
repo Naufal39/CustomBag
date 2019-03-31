@@ -35,10 +35,15 @@ class View extends CI_Controller {
  
         $this->load->view('struktur/footer');
     }
-    public function single(){
+    public function single($id = null){
         $this->load->view('struktur/meta');
         $this->load->view('struktur/header');
-        $this->load->view('pages/shop-single');
+
+        $product = $this->product_model;
+        $data["product"] = $product->getById($id);
+        if (!$data["product"]) show_404();
+        $this->load->view('pages/shop-single', $data);
+
         $this->load->view('struktur/footer');
     }
 }
