@@ -35,7 +35,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url();?>kasir/persediaan">
+            <a class="nav-link" href="<?php echo base_url();?>kasir/kasir/persediaan">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Persediaan</span>
             </a>
@@ -51,7 +51,7 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url();?>kasir/pesan">
+            <a class="nav-link" href="<?php echo base_url();?>kasir/product/add">
                 <i class="fas fa-fw fa-shopping-cart "></i>
                 <span>Pesan</span>
             </a>

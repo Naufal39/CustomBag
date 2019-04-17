@@ -37,6 +37,10 @@
         echo "</tr>";
         $no++;
       }
+      echo '<tr>
+		<td colspan="4">TOTAL</td>
+		<td>' . number_format($total_untung, 0, ',', '.') . '</td>
+	 </tr>';
     }
     ?>
   </table>

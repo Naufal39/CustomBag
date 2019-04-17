@@ -40,7 +40,8 @@ class Transaksi extends CI_Controller {
     $data['ket'] = $ket;
     $data['url_cetak'] = base_url('index.php/'.$url_cetak);
     $data['transaksi'] = $transaksi;
-        $data['option_tahun'] = $this->TransaksiModel->option_tahun();
+    $data['option_tahun'] = $this->TransaksiModel->option_tahun();
+    $data['total_untung'] = $this->TransaksiModel->total();
     $this->load->view('admin/product/laporan', $data);
   }
   
@@ -72,6 +73,7 @@ class Transaksi extends CI_Controller {
         
         $data['ket'] = $ket;
         $data['transaksi'] = $transaksi;
+        $data['total_untung'] = $this->TransaksiModel->total();
         
     ob_start();
     $this->load->view('admin/print', $data);
@@ -83,6 +85,7 @@ class Transaksi extends CI_Controller {
     $pdf->WriteHTML($html);
     $pdf->Output('Data Transaksi.pdf', 'D');
   }
+
 }
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> -->
+<html lang="en">
 
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
@@ -32,7 +32,7 @@
         <br /><br />
         <div id="form-tanggal">
             <label>Tanggal</label><br>
-            <input type="text" name="tanggal" class="input-tanggal" />
+            <input type="text" name="tanggal" class="input-tanggal" placeholder="yyyy-mm-dd" />
             <br /><br />
         </div>
         <div id="form-bulan">
@@ -67,7 +67,7 @@
             <br /><br />
         </div>
         <button type="submit">Tampilkan</button>
-        <a href="<?php echo base_url(); ?>">Reset Filter</a>
+        <a href="<?php echo base_url('admin/transaksi'); ?>">Reset Filter</a>
     </form>
     <hr />
     
@@ -92,35 +92,17 @@
         echo "<td>".$data->kode."</td>";
         echo "<td>".$data->barang."</td>";
         echo "<td>".$data->jumlah."</td>";
-        echo "<td>".$data->total_harga."</td>";
+        echo "<td>".number_format($data->total_harga, 0, ',', '.')."</td>";
         echo "</tr>";
         $no++;
       }
+      echo '<tr>
+		<td colspan="4">TOTAL</td>
+		<td>' . number_format($total_untung, 0, ',', '.') . '</td>
+	 </tr>';
     }
-    ?>
     
-    <script src="<?php echo base_url('assets/jquery-ui/jquery-ui.min.js'); ?>"></script> <!-- Load file plugin js jquery-ui -->
-    <script>
-    $(document).ready(function(){ // Ketika halaman selesai di load
-        $('.input-tanggal').datepicker({
-            dateFormat: 'yy-mm-dd' // Set format tanggalnya jadi yyyy-mm-dd
-        });
-        $('#form-tanggal, #form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
-        $('#filter').change(function(){ // Ketika user memilih filter
-            if($(this).val() == '1'){ // Jika filter nya 1 (per tanggal)
-                $('#form-bulan, #form-tahun').hide(); // Sembunyikan form bulan dan tahun
-                $('#form-tanggal').show(); // Tampilkan form tanggal
-            }else if($(this).val() == '2'){ // Jika filter nya 2 (per bulan)
-                $('#form-tanggal').hide(); // Sembunyikan form tanggal
-                $('#form-bulan, #form-tahun').show(); // Tampilkan form bulan dan tahun
-            }else{ // Jika filternya 3 (per tahun)
-                $('#form-tanggal, #form-bulan').hide(); // Sembunyikan form tanggal dan bulan
-                $('#form-tahun').show(); // Tampilkan form tahun
-            }
-            $('#form-tanggal input, #form-bulan select, #form-tahun select').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
-        })
-    })
-    </script>
+    ?>
 </table>
 				</div>
 
@@ -142,12 +124,34 @@
 
 	<?php $this->load->view("admin/_partials/js.php") ?>
 
+    <script src="<?php echo base_url('assets/jquery-ui/jquery-ui.min.js'); ?>"></script> <!-- Load file plugin js jquery-ui -->
 	<script>
 	function deleteConfirm(url){
 		$('#btn-delete').attr('href', url);
 		$('#deleteModal').modal();
 	}
 	</script>
+      <script>
+    $(document).ready(function(){ // Ketika halaman selesai di load
+        $('.input-tanggal').datepicker({
+            dateFormat: 'yy-mm-dd' // Set format tanggalnya jadi yyyy-mm-dd
+        });
+        $('#form-tanggal, #form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
+        $('#filter').change(function(){ // Ketika user memilih filter
+            if($(this).val() == '1'){ // Jika filter nya 1 (per tanggal)
+                $('#form-bulan, #form-tahun').hide(); // Sembunyikan form bulan dan tahun
+                $('#form-tanggal').show(); // Tampilkan form tanggal
+            }else if($(this).val() == '2'){ // Jika filter nya 2 (per bulan)
+                $('#form-tanggal').hide(); // Sembunyikan form tanggal
+                $('#form-bulan, #form-tahun').show(); // Tampilkan form bulan dan tahun
+            }else{ // Jika filternya 3 (per tahun)
+                $('#form-tanggal, #form-bulan').hide(); // Sembunyikan form tanggal dan bulan
+                $('#form-tahun').show(); // Tampilkan form tahun
+            }
+            $('#form-tanggal input, #form-bulan select, #form-tahun select').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
+        })
+    })
+    </script>
 </body>
 
 </html>

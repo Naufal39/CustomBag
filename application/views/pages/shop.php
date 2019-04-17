@@ -44,9 +44,9 @@
                     <a href="<?php echo site_url('view/single/'.$product->product_id);?>"><img src="<?php echo base_url('upload/product/'.$product->image);?>" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="<?php echo site_url();?>view/single"><?php echo $product->name ?></a></h3>
+                    <h3><a href="<?php echo site_url('view/single/'.$product->product_id);?>"><?php echo $product->name ?></a></h3>
                     <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold"><?php echo $product->price ?></p>
+                    <p class="text-primary font-weight-bold">Rp. <?php echo $product->price ?></p>
                   </div>
                 </div>
               </div>

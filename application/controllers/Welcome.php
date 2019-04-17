@@ -30,7 +30,7 @@ class Welcome extends CI_Controller {
 					redirect('gudang/index');
 				}
 				elseif ($loginData->level=='kasir'){
-					redirect('kasir/index');
+					redirect('kasir/kasir/index');
 				}
 			}
 			else{

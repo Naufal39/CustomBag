@@ -29,7 +29,7 @@ class Product_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->_table)->result();
+      return $this->db->get($this->_table)->result();
     }
     
     public function getById($id)
