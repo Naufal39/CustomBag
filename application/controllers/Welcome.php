@@ -27,7 +27,7 @@ class Welcome extends CI_Controller {
 				if ($loginData->level=='admin'){
 					redirect(site_url('admin/overview'));
 				}elseif ($loginData->level=='gudang'){
-					redirect('gudang/index');
+					redirect('gudang/admin');
 				}
 				elseif ($loginData->level=='kasir'){
 					redirect('kasir/kasir/index');

@@ -6,6 +6,7 @@ class View extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("product_model");
+        $this->load->model("M_gudang");
         $this->load->library('form_validation');
     }
      function hallo(){

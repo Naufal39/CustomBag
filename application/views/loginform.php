@@ -66,64 +66,22 @@
 	                        		</div>
 	                            </div>
 	                            <div class="form-bottom">
-                                    <?php echo form_open('welcome/ceklogin') ?>
+                                    
 				                    <form role="form" action="" method="post" class="login-form">
 				                    	<div class="form-group">
-				                    		<label class="sr-only" for="form-username">Username</label>
-				                        	<input type="text" name="user" placeholder="Username..." class="form-username form-control" id="form-username">
+				                    		<button type="submit" name="login" class="btn" ><a href="<?php echo base_url('admin/overview'); ?>" style="color:white;">ADMIN</a></button>
 				                        </div>
 				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="pass" placeholder="Password..." class="form-password form-control" id="form-password">
+				                        	<button type="submit" name="login" class="btn" ><a href="<?php echo base_url('kasir'); ?>" style="color:white;">KASIR</a></button>
 				                        </div>
-				                        <button type="submit" name="login" class="btn">Sign in!</button>
+				                        <button type="submit" name="login" class="btn" ><a href="<?php echo base_url('gudang'); ?>" style="color:white;">GUDANG</a></button>
                                     </form>
-                                    <?php echo form_close() ?>
+                                    
 			                    </div>
 		                    </div>
 	                        
                         </div>
                         
-                        <!-- <div class="col-sm-1 middle-border"></div>
-                        <div class="col-sm-1"></div>
-                        	
-                        <div class="col-sm-5"> -->
-                        	
-                        	<!-- <div class="form-box">
-                        		<div class="form-top">
-	                        		<div class="form-top-left">
-	                        			<h3>Sign up now</h3>
-	                            		<p>Fill in the form below to get instant access:</p>
-	                        		</div>
-	                        		<div class="form-top-right">
-	                        			<i class="fa fa-pencil"></i>
-	                        		</div>
-	                            </div>
-	                            <div class="form-bottom">
-				                    <form role="form" action="" method="post" class="registration-form">
-				                    	<div class="form-group">
-				                    		<label class="sr-only" for="form-first-name">First name</label>
-				                        	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
-				                        </div>
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-last-name">Last name</label>
-				                        	<input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
-				                        </div>
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-email">Email</label>
-				                        	<input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
-				                        </div>
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-about-yourself">About yourself</label>
-				                        	<textarea name="form-about-yourself" placeholder="About yourself..." 
-				                        				class="form-about-yourself form-control" id="form-about-yourself"></textarea>
-				                        </div>
-				                        <button type="submit" class="btn">Sign me up!</button>
-				                    </form>
-			                    </div>
-                        	</div> -->
-                        	
-                        <!-- </div> -->
                     </div>
                     
                 </div>
