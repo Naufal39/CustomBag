@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Apr 2019 pada 16.28
+-- Waktu pembuatan: 01 Bulan Mei 2019 pada 03.58
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -70,42 +70,17 @@ CREATE TABLE `tb_barang_keluar` (
   `bag_depan` varchar(100) NOT NULL,
   `bag_belakang` varchar(100) NOT NULL,
   `satuan` varchar(50) NOT NULL,
-  `jumlah` varchar(10) NOT NULL
+  `jumlah` varchar(10) NOT NULL,
+  `total_harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tb_barang_keluar`
 --
 
-INSERT INTO `tb_barang_keluar` (`id`, `id_transaksi`, `tanggal_masuk`, `tanggal_keluar`, `lokasi`, `kode_barang`, `nama_barang`, `jenis_tas`, `nama_bahan`, `type_sleting`, `bag_depan`, `bag_belakang`, `satuan`, `jumlah`) VALUES
-(1, 'WG-201713067948', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'NTB', '8888166995215', 'Ciki Walens', '', '', '', '', '', 'Dus', '50'),
-(2, 'WG-201713067948', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'NTB', '8888166995215', 'Ciki Walens', '', '', '', '', '', 'Dus', '6'),
-(3, 'WG-201713549728', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Banten', '1923081008002', 'Buku Hiragana', '', '', '', '', '', 'Pack', '3'),
-(4, 'WG-201774896520', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Yogyakarta', '60201311121008264', 'Battery ZTE', '', '', '', '', '', 'Dus', '3'),
-(5, 'WG-201727134650', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Jakarta', '29312390203', 'Susu', '', '', '', '', '', 'Dus', '17'),
-(6, 'WG-201810974628', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Lampung', '1923081008002', 'Buku Nihongo', '', '', '', '', '', 'Dus', '50'),
-(7, 'WG-201781267543', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Yogyakarta', '97897952889', 'Buku Framework Codeigniter', '', '', '', '', '', 'Dus', '1'),
-(8, 'WG-201832570869', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Bali', '1923081008002', 'test', '', '', '', '', '', 'Dus', '10'),
-(9, 'WG-201893850472', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Bali', '1923081008002', 'lumpur nartugo', '', '', '', '', '', 'Pcs', '11'),
-(10, 'WG-201781267543', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Yogyakarta', '97897952889', 'Buku Framework Codeigniter', '', '', '', '', '', 'Dus', '1'),
-(11, 'WG-201727134650', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Jakarta', '29312390203', 'Susu', '', '', '', '', '', 'Dus', '3'),
-(12, 'WG-201774896520', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Yogyakarta', '60201311121008264', 'Battery ZTE', '', '', '', '', '', 'Dus', '3'),
-(13, 'WG-201727134650', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Jakarta', '29312390203', 'Susu', '', '', '', '', '', 'Dus', '1'),
-(14, 'WG-201727134650', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Jakarta', '29312390203', 'Susu', '', '', '', '', '', 'Dus', '1'),
-(15, 'WG-201885472106', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Riau', '8996001600146', 'Teh Pucuk', '', '', '', '', '', 'Dus', '50'),
-(16, 'WG-201871602934', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Papua', '312212331222', 'Kopi Hitam', '', '', '', '', '', 'Dus', '10'),
-(17, 'WG-201909516372', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Bengkulu', 'asaw', 'teh', '', '', '', '', '', 'Pcs', '56'),
-(18, 'WG-201994738506', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Bali', '78942', 'popoku2', '', '', '', '', '', 'Dus', '23'),
-(19, 'WG-201925781604', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Jakarta', '656462', 'popok', '', '', '', '', '', 'Dus', '2'),
-(20, 'WG-201937849210', '0000-00-00 00:00:00', '2019-04-27 00:00:00', 'Jakarta', '159236', 'tas hitam222', '', '', '', '', '', 'Pcs', '3'),
-(21, 'WG-201983709126', '2019-05-08 00:00:00', '2019-04-27 00:00:00', 'Lampung', '55555', 'tas hitam3333', '', '', '', '', '', 'Pcs', '5'),
-(22, 'WG-201937905814', '0000-00-00 00:00:00', '2019-04-28 00:00:00', 'Bali', '78942', 'Tas gunung2', 'Tas gun', 'denim', 'sleting', 'depan', 'belakang', 'Pcs', '3'),
-(23, 'WG-201993857602', '2019-04-28 00:00:00', '2019-04-28 00:00:00', 'Jakarta', '55555', 'tas pantai', 'Tas pantai', '3', 'sleting2', 'depan2', 'belakang1', 'Pcs', '5'),
-(24, 'WG-201937082946', '2019-04-28 00:00:00', '2019-04-28 00:00:00', 'Jawa Tengah', '656462', 'tas hitamku', 'TAS TROLI  ', 'Leather - Nabati', 'sleting2', 'depan211', 'belakang122', 'Dus', '5'),
-(25, 'WG-201959703482', '2019-04-10 00:00:00', '2019-04-28 00:00:00', 'Jakarta', '656462', 'tas hitamku45345', 'SOFT CASE ', 'Leather - PullUp', 'sleting2', 'depan', 'belakang1', 'Pcs', '50'),
-(26, 'WG-201959703482', '2019-04-10 00:00:00', '2019-04-29 00:00:00', 'Jakarta', '656462', 'tas hitamku45345', 'SOFT CASE ', 'Leather - PullUp', 'sleting2', 'depan', 'belakang1', 'Pcs', '16'),
-(27, 'WG-201918390452', '2019-04-29 00:00:00', '2019-04-29 00:00:00', 'Yogyakarta', '159487', 'gudibagsss', 'TAS RANSEL LAPTOP', 'Leather - Suede', 'sleting21222', 'depan211111545', 'belakang124', 'Pcs', '35'),
-(28, 'WG-201926490817', '2019-04-30 00:00:00', '2019-04-30 00:00:00', 'Bengkulu', '78942', 'teh', 'TAS KOPER', 'Leather - PullUp', 'sleting21222', 'depan', 'belakang122', 'Pcs', '3');
+INSERT INTO `tb_barang_keluar` (`id`, `id_transaksi`, `tanggal_masuk`, `tanggal_keluar`, `lokasi`, `kode_barang`, `nama_barang`, `jenis_tas`, `nama_bahan`, `type_sleting`, `bag_depan`, `bag_belakang`, `satuan`, `jumlah`, `total_harga`) VALUES
+(30, 'CB-201990168357', '2019-05-01 00:00:00', '2019-06-02 00:00:00', '', '1234568', 'tas hitamku', 'TAS SEMINAR', 'Leather - PullUp', 'sleting2', 'depan', 'belakang', 'Pcs', '15', 500000),
+(31, 'CB-201914378905', '2019-05-01 00:00:00', '2019-05-01 00:00:00', '', '7508462', 'Tas Lepi', 'TAS KANVAS', 'Leather - Nabati', 'sleting', 'depan211', 'belakang1', 'Pcs', '50', 48965);
 
 --
 -- Trigger `tb_barang_keluar`
@@ -138,18 +113,16 @@ CREATE TABLE `tb_barang_masuk` (
   `bag_depan` varchar(100) NOT NULL,
   `bag_belakang` varchar(100) NOT NULL,
   `satuan` varchar(50) NOT NULL,
-  `jumlah` varchar(10) NOT NULL
+  `jumlah` varchar(10) NOT NULL,
+  `total_harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tb_barang_masuk`
 --
 
-INSERT INTO `tb_barang_masuk` (`id_transaksi`, `tanggal`, `lokasi`, `kode_barang`, `nama_barang`, `jenis_tas`, `nama_bahan`, `type_sleting`, `bag_depan`, `bag_belakang`, `satuan`, `jumlah`) VALUES
-('WG-201918390452', '2019-04-29', 'Yogyakarta', '159487', 'gudibagsss', 'TAS RANSEL LAPTOP', 'Leather - Suede', 'sleting21222', 'depan211111545', 'belakang124', 'Pcs', '31'),
-('WG-201926490817', '2019-04-30', 'Bengkulu', '78942', 'teh', 'TAS KOPER', 'Leather - PullUp', 'sleting21222', 'depan', 'belakang122', 'Pcs', '30'),
-('WG-201965741039', '2019-04-29', 'Jawa Timur', 'asaw222', 'tas hitam43', 'TAS SEMINAR', 'Satin', 'sleting21222', 'depan211', 'belakang12121', 'Pcs', '23'),
-('WG-201992046157', '2019-04-29', 'Jakarta', '55555', 'tas hitamku123', 'TAS SPUNBOND ', 'Polyester', 'sleting21', 'depan211111', 'belakang122222', 'Pcs', '34');
+INSERT INTO `tb_barang_masuk` (`id_transaksi`, `tanggal`, `lokasi`, `kode_barang`, `nama_barang`, `jenis_tas`, `nama_bahan`, `type_sleting`, `bag_depan`, `bag_belakang`, `satuan`, `jumlah`, `total_harga`) VALUES
+('CB-201914378905', '2019-05-01', '', '7508462', 'Tas Lepi', 'TAS KANVAS', 'Leather - Nabati', 'sleting', 'depan211', 'belakang1', 'Pcs', '4', 48965);
 
 -- --------------------------------------------------------
 
@@ -403,7 +376,7 @@ ALTER TABLE `tb_bahan`
 -- AUTO_INCREMENT untuk tabel `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_satuan`
