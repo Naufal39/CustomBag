@@ -35,7 +35,7 @@ class TransaksiModel extends CI_Model {
   public function total(){
     // $this->db->query("SELECT SUM(total_harga) from transaksi");
     $this->db->select_sum('total_harga');
-    $query = $this->db->get('transaksi');
+    $query = $this->db->get('tb_barang_keluar');
    if($query->num_rows()>0)
    {
      return $query->row()->total_harga;

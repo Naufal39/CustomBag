@@ -186,8 +186,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <!-- <li><a href="<?php echo base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?php echo base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
+            <!-- <li><a href="<?php echo base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li> -->
+            <li><a href="<?php echo base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -198,9 +198,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('gudang/tabel_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
-            <li><a href="<?= base_url('gudang/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li><a href="<?= base_url('gudang/tabel_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Pesanan Masuk
+           
+              <span class="label bg-red"><?=$list_data?></span></a></li>
+            <li><a href="<?= base_url('gudang/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Pesanan Keluar</a></li>
+            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
           </ul>
 
         <li class="header">LABELS</li>

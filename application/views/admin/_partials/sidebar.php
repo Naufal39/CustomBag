@@ -16,7 +16,7 @@
         </div>
             <a class="dropdown-item" style="color:white;" href="<?php echo site_url('admin/products') ?>">List Product</a>
             <a class="dropdown-item" style="color:white;" href="<?php echo site_url('admin/products/add') ?>">New Product</a>
-            <a class="dropdown-item" style="color:white;" href="<?php echo site_url('admin/transaksi') ?>">Laporan</a>
+            <a class="dropdown-item" style="color:white;" href="<?php echo site_url('admin/transaksi1') ?>">Laporan</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">

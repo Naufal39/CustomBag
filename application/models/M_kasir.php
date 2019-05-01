@@ -1,6 +1,6 @@
 <?php
 
-class M_gudang extends CI_Model
+class M_kasir extends CI_Model
 {
 
   public function insert($tabel,$data)
@@ -134,11 +134,11 @@ class M_gudang extends CI_Model
     }
 public function total(){
     // $this->db->query("SELECT SUM(total_harga) from transaksi");
-    $this->db->select_sum('total_harga');
+    $this->db->select_sum('jumlah');
     $query = $this->db->get('tb_barang_keluar');
    if($query->num_rows()>0)
    {
-     return $query->row()->total_harga;
+     return $query->row()->jumlah;
    }
    else
    {
@@ -148,7 +148,7 @@ public function total(){
 
   public function hitungJumlahAsset()
   {   
-    $query = $this->db->get('tb_barang_masuk');
+    $query = $this->db->get('tb_barang_keluar');
     if($query->num_rows()>0)
     {
       return $query->num_rows();

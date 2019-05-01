@@ -137,8 +137,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
+            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li> -->
+            <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
           </ul>
         </li>
         <li class="treeview active">
@@ -151,7 +151,7 @@
           <ul class="treeview-menu">
             <li><a href="<?= base_url('gudang/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
             <li class="active"><a href="<?= base_url('gudang/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
           </ul>
         </li>
 
@@ -212,7 +212,6 @@
                   <th>ID Transaksi</th>
                   <th>Tanggal Masuk</th>
                   <th>Tanggal Keluar</th>
-                  <th>Lokasi</th>
                   <th>Kode Barang</th>
                   <th>Nama Barang</th>
                   <th>Satuan</th>
@@ -230,7 +229,6 @@
                     <td><?=$dd->id_transaksi?></td>
                     <td><?=$dd->tanggal_masuk?></td>
                     <td><?=$dd->tanggal_keluar?></td>
-                    <td><?=$dd->lokasi?></td>
                     <td><?=$dd->kode_barang?></td>
                     <td><?=$dd->nama_barang?></td>
                     <td><?=$dd->satuan?></td>
@@ -249,7 +247,6 @@
                   <th>ID Transaksi</th>
                   <th>Tanggal Masuk</th>
                   <th>Tanggal Keluar</th>
-                  <th>Lokasi</th>
                   <th>Kode Barang</th>
                   <th>Nama Barang</th>
                   <th>Satuan</th>

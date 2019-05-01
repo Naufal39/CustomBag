@@ -137,8 +137,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('kasir/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?= base_url('kasir/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
+            <li><a href="<?= base_url('kasir/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Pesanan Masuk</a></li>
+            <!-- <li><a href="<?= base_url('kasir/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
           </ul>
         </li>
         <li class="treeview active">
@@ -149,9 +149,9 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
-            <li class="active"><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
+            <li class="active"><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Pesanan Keluar</a></li>
+            <!-- <li><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li> -->
           </ul>
         </li>
 
@@ -203,7 +203,7 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('kasir/tabel_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Keluar</a>
+              <a href="<?=base_url('kasir/tabel_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Pesanan Keluar</a>
               <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -212,7 +212,6 @@
                   <th>ID Transaksi</th>
                   <th>Tanggal Masuk</th>
                   <th>Tanggal Keluar</th>
-                  <th>Lokasi</th>
                   <th>Kode Barang</th>
                   <th>Nama Barang</th>
                   <th>Satuan</th>
@@ -230,7 +229,6 @@
                     <td><?=$dd->id_transaksi?></td>
                     <td><?=$dd->tanggal_masuk?></td>
                     <td><?=$dd->tanggal_keluar?></td>
-                    <td><?=$dd->lokasi?></td>
                     <td><?=$dd->kode_barang?></td>
                     <td><?=$dd->nama_barang?></td>
                     <td><?=$dd->satuan?></td>
@@ -249,7 +247,6 @@
                   <th>ID Transaksi</th>
                   <th>Tanggal Masuk</th>
                   <th>Tanggal Keluar</th>
-                  <th>Lokasi</th>
                   <th>Kode Barang</th>
                   <th>Nama Barang</th>
                   <th>Satuan</th>

@@ -133,8 +133,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
+            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li> -->
+            <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
           </ul>
         </li>
         <li class="treeview active">
@@ -147,7 +147,7 @@
           <ul class="treeview-menu">
             <li><a href="<?= base_url('gudang/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
             <li><a href="<?= base_url('gudang/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li class="active"><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li class="active"><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
           </ul>
         </li>
         <li>
@@ -207,13 +207,13 @@
                   <?php foreach($data_satuan as $d){ ?>
                     <div class="box-body">
                       <div class="form-group" style="display:inline-block;">
-                        <input type="hidden" name="id_satuan" value="<?=$d->id_satuan?>">
-                        <label for="kode_satuan" style="width:87%;margin-left: 12px;">Kode Satuan</label>
-                        <input type="text" required name="kode_satuan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_satuan" placeholder="Kode Satuan" value="<?=$d->kode_satuan?>">
+                        <input type="hidden" name="id_bahan" value="<?=$d->id_bahan?>">
+                        <label for="kode_satuan" style="width:87%;margin-left: 12px;">Nama Bahan</label>
+                        <input type="text" required name="nama_bahan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_satuan" placeholder="Nama Bahan" value="<?=$d->nama_bahan?>">
                       </div>
                       <div class="form-group" style="display:inline-block;">
-                        <label for="nama_satuan" style="width:73%;">Nama Satuan</label>
-                        <input type="text" required name="nama_satuan" style="width:90%;margin-right: 67px;" class="form-control" id="nama_satuan" placeholder="Nama Satuan" value="<?=$d->nama_satuan?>">
+                        <label for="nama_satuan" style="width:73%;">Stok</label>
+                        <input type="text" required name="stok" style="width:90%;margin-right: 67px;" class="form-control" id="nama_satuan" placeholder="Stok" value="<?=$d->stok?>">
                     </div>
                     <div class="form-group" style="display:inline-block;">
                       <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:20px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>

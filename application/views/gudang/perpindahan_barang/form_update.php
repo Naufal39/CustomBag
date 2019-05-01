@@ -133,8 +133,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
+            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li> -->
+            <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
           </ul>
         </li>
         <li class="treeview active">
@@ -147,7 +147,7 @@
           <ul class="treeview-menu">
             <li class="active"><a href="<?= base_url('gudang/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
             <li><a href="<?= base_url('gudang/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
           </ul>
         </li>
         <li class="header">LABELS</li>
@@ -215,10 +215,6 @@
                   <label for="tanggal_keluar" style="margin-left:220px;display:inline;">Tanggal Keluar</label>
                   <input type="text" name="tanggal_keluar" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" required="" placeholder="Klik Disini">
                 </div>
-                <div class="form-group" style="margin-bottom:40px;">
-                  <label for="lokasi" style="margin-left:220px;display:inline;">Lokasi</label>
-                  <input type="text" name="lokasi" style="margin-left:117px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->lokasi?>">
-                </div>
                 <div class="form-group" style="display:inline-block;">
                   <label for="kode_barang" style="width:87%;margin-left: 12px;">Kode Barang / Barcode</label>
                   <input type="text" name="kode_barang" readonly="readonly" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_barang" value="<?=$d->kode_barang?>">
@@ -226,6 +222,28 @@
                 <div class="form-group" style="display:inline-block;">
                   <label for="nama_Barang" style="width:73%;">Nama Barang</label>
                   <input type="text" name="nama_barang" readonly="readonly" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" value="<?=$d->nama_barang?>">
+              </div>
+              <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Jenis Tas</label>
+                  <input type="text" name="jenis_tas" readonly="readonly" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" value="<?=$d->jenis_tas?>">
+              </div>
+              <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Nama Bahan</label>
+                  <input type="text" name="nama_bahan" readonly="readonly" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" value="<?=$d->nama_bahan?>">
+              </div>
+              <div class="box-body">
+              <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Type Sleting</label>
+                  <input type="text" name="type_sleting" readonly="readonly" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" value="<?=$d->type_sleting?>">
+              </div>
+              <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Bagian Depan</label>
+                  <input type="text" name="bag_depan" readonly="readonly" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" value="<?=$d->bag_depan?>">
+              </div>
+              <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Bagian Belakang</label>
+                  <input type="text" name="bag_belakang" readonly="readonly" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" value="<?=$d->bag_belakang?>">
+              </div>
               </div>
                 <div class="form-group" style="display:inline-block;">
                   <label for="satuan" style="width:73%;">Satuan</label>
@@ -242,6 +260,10 @@
               <div class="form-group" style="display:inline-block;">
                 <label for="jumlah" style="width:73%;margin-left:33px;">Jumlah</label>
                 <input type="number" name="jumlah" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah" max="<?=$d->jumlah?>" value="<?=$d->jumlah?>">
+            </div>
+             <div class="form-group" style="display:inline-block;">
+                <label for="jumlah" style="width:73%;margin-left:33px;">Total Harga</label>
+                <input type="number" name="total_harga" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah" value="<?=$d->total_harga?>">
             </div>
             <?php } ?>
               <!-- /.box-body -->

@@ -12,8 +12,13 @@ class Gudang extends CI_Controller{
   public function index(){
     
      
+     $data = array(
+           
+            'avatar'    => $this->M_gudang->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
+          );
+      $data['list_data'] = $this->M_gudang->hitungJumlahAsset();
       $data['stokBarangMasuk'] = $this->M_gudang->sum('tb_barang_masuk','jumlah');
-      $data['stokBarangKeluar'] = $this->M_gudang->sum('tb_barang_keluar','jumlah');      
+      $data['stokBarangKeluar'] = $this->M_gudang->sum('tb_barang_keluar','jumlah'); 
       $this->load->view('gudang/index',$data);
 
   }
@@ -25,6 +30,8 @@ class Gudang extends CI_Controller{
   public function form_barangmasuk()
   {
     $data['list_satuan'] = $this->M_gudang->select('tb_satuan');
+    $data['list_bahan']  = $this->M_gudang->select('tb_bahan');
+    $data['list_tas']     = $this->M_gudang->select('tb_tas');
     $data['avatar'] = $this->M_gudang->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('gudang/form_barangmasuk/form_insert',$data);
   }
@@ -43,6 +50,8 @@ class Gudang extends CI_Controller{
     $where = array('id_transaksi' => $id_transaksi);
     $data['data_barang_update'] = $this->M_gudang->get_data('tb_barang_masuk',$where);
     $data['list_satuan'] = $this->M_gudang->select('tb_satuan');
+    $data['list_bahan']  = $this->M_gudang->select('tb_bahan');
+    $data['list_tas']     = $this->M_gudang->select('tb_tas');
     $data['avatar'] = $this->M_gudang->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('gudang/form_barangmasuk/form_update',$data);
   }
@@ -58,29 +67,44 @@ class Gudang extends CI_Controller{
 
   public function proses_databarang_masuk_insert()
   {
-    $this->form_validation->set_rules('lokasi','Lokasi','required');
     $this->form_validation->set_rules('kode_barang','Kode Barang','required');
     $this->form_validation->set_rules('nama_barang','Nama Barang','required');
+    $this->form_validation->set_rules('jenis_tas','Jenis Tas','required');
+    $this->form_validation->set_rules('nama_bahan','Nama Bahan','required');
+    $this->form_validation->set_rules('type_sleting','Type Sleting','required');
+    $this->form_validation->set_rules('bag_depan','Bagian Depan','required');
+    $this->form_validation->set_rules('bag_belakang','Bagian Belakang','required');
     $this->form_validation->set_rules('jumlah','Jumlah','required');
+    $this->form_validation->set_rules('total_harga','Total Harga','required');
 
     if($this->form_validation->run() == TRUE)
     {
       $id_transaksi = $this->input->post('id_transaksi',TRUE);
       $tanggal      = $this->input->post('tanggal',TRUE);
-      $lokasi       = $this->input->post('lokasi',TRUE);
       $kode_barang  = $this->input->post('kode_barang',TRUE);
       $nama_barang  = $this->input->post('nama_barang',TRUE);
+      $jenis_tas    = $this->input->post('jenis_tas',TRUE);
+      $nama_bahan   = $this->input->post('nama_bahan',TRUE);
+      $type_sleting = $this->input->post('type_sleting',TRUE);
+      $bag_depan    = $this->input->post('bag_depan',TRUE);
+      $bag_belakang = $this->input->post('bag_belakang',TRUE);
       $satuan       = $this->input->post('satuan',TRUE);
       $jumlah       = $this->input->post('jumlah',TRUE);
+      $total_harga  = $this->input->post('total_harga',TRUE);
 
       $data = array(
             'id_transaksi' => $id_transaksi,
             'tanggal'      => $tanggal,
-            'lokasi'       => $lokasi,
             'kode_barang'  => $kode_barang,
             'nama_barang'  => $nama_barang,
+            'jenis_tas'    => $jenis_tas,
+            'nama_bahan'   => $nama_bahan,
+            'type_sleting' => $type_sleting,
+            'bag_depan'    => $bag_depan,
+            'bag_belakang' => $bag_belakang,
             'satuan'       => $satuan,
-            'jumlah'       => $jumlah
+            'jumlah'       => $jumlah,
+            'total_harga'  => $total_harga
       );
       $this->M_gudang->insert('tb_barang_masuk',$data);
 
@@ -88,36 +112,53 @@ class Gudang extends CI_Controller{
       redirect(base_url('gudang/form_barangmasuk'));
     }else {
       $data['list_satuan'] = $this->M_gudang->select('tb_satuan');
+      $data['list_bahan']  = $this->M_gudang->select('tb_bahan');
+      $data['list_tas']     = $this->M_gudang->select('tb_tas');
       $this->load->view('gudang/form_barangmasuk/form_insert',$data);
     }
   }
 
   public function proses_databarang_masuk_update()
   {
-    $this->form_validation->set_rules('lokasi','Lokasi','required');
     $this->form_validation->set_rules('kode_barang','Kode Barang','required');
     $this->form_validation->set_rules('nama_barang','Nama Barang','required');
     $this->form_validation->set_rules('jumlah','Jumlah','required');
+    $this->form_validation->set_rules('jenis_tas','Jenis Tas','required');
+    $this->form_validation->set_rules('nama_bahan','Nama Bahan','required');
+    $this->form_validation->set_rules('type_sleting','Type Sleting','required');
+    $this->form_validation->set_rules('bag_depan','Bagian Depan','required');
+    $this->form_validation->set_rules('bag_belakang','Bagian Belakang','required');
+    $this->form_validation->set_rules('total_harga','Total Harga','required');
 
     if($this->form_validation->run() == TRUE)
     {
       $id_transaksi = $this->input->post('id_transaksi',TRUE);
       $tanggal      = $this->input->post('tanggal',TRUE);
-      $lokasi       = $this->input->post('lokasi',TRUE);
       $kode_barang  = $this->input->post('kode_barang',TRUE);
       $nama_barang  = $this->input->post('nama_barang',TRUE);
+      $jenis_tas    = $this->input->post('jenis_tas',TRUE);
+      $nama_bahan   = $this->input->post('nama_bahan',TRUE);
+      $type_sleting = $this->input->post('type_sleting',TRUE);
+      $bag_depan    = $this->input->post('bag_depan',TRUE);
+      $bag_belakang = $this->input->post('bag_belakang',TRUE);
       $satuan       = $this->input->post('satuan',TRUE);
       $jumlah       = $this->input->post('jumlah',TRUE);
+      $total_harga  = $this->input->post('total_harga',TRUE);
 
       $where = array('id_transaksi' => $id_transaksi);
       $data = array(
             'id_transaksi' => $id_transaksi,
             'tanggal'      => $tanggal,
-            'lokasi'       => $lokasi,
             'kode_barang'  => $kode_barang,
             'nama_barang'  => $nama_barang,
+            'jenis_tas'    => $jenis_tas,
+            'nama_bahan'   => $nama_bahan,
+            'type_sleting' => $type_sleting,
+            'bag_depan'    => $bag_depan,
+            'bag_belakang' => $bag_belakang,
             'satuan'       => $satuan,
-            'jumlah'       => $jumlah
+            'jumlah'       => $jumlah,
+            'total_harga'  => $total_harga
       );
       $this->M_gudang->update('tb_barang_masuk',$data,$where);
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
@@ -143,7 +184,7 @@ class Gudang extends CI_Controller{
 
   public function tabel_satuan()
   {
-    $data['list_data'] = $this->M_gudang->select('tb_satuan');
+    $data['list_data'] = $this->M_gudang->select('tb_bahan');
     $data['avatar'] = $this->M_gudang->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('gudang/tabel/tabel_satuan',$data);
   }
@@ -151,8 +192,8 @@ class Gudang extends CI_Controller{
   public function update_satuan()
   {
     $uri = $this->uri->segment(3);
-    $where = array('id_satuan' => $uri);
-    $data['data_satuan'] = $this->M_gudang->get_data('tb_satuan',$where);
+    $where = array('id_bahan' => $uri);
+    $data['data_satuan'] = $this->M_gudang->get_data('tb_bahan',$where);
     $data['avatar'] = $this->M_gudang->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('gudang/form_satuan/form_update',$data);
   }
@@ -160,28 +201,28 @@ class Gudang extends CI_Controller{
   public function delete_satuan()
   {
     $uri = $this->uri->segment(3);
-    $where = array('id_satuan' => $uri);
-    $this->M_gudang->delete('tb_satuan',$where);
+    $where = array('id_bahan' => $uri);
+    $this->M_gudang->delete('tb_bahan',$where);
     redirect(base_url('gudang/tabel_satuan'));
   }
 
   public function proses_satuan_insert()
   {
-    $this->form_validation->set_rules('kode_satuan','Kode Satuan','trim|required|max_length[100]');
-    $this->form_validation->set_rules('nama_satuan','Nama Satuan','trim|required|max_length[100]');
+    $this->form_validation->set_rules('nama_bahan','nama_bahan','trim|required|max_length[100]');
+    $this->form_validation->set_rules('stok','stok','trim|required|max_length[100]');
 
     if($this->form_validation->run() ==  TRUE)
     {
-      $kode_satuan = $this->input->post('kode_satuan' ,TRUE);
-      $nama_satuan = $this->input->post('nama_satuan' ,TRUE);
+      $nama_bahan = $this->input->post('nama_bahan' ,TRUE);
+      $stok = $this->input->post('stok' ,TRUE);
 
       $data = array(
-            'kode_satuan' => $kode_satuan,
-            'nama_satuan' => $nama_satuan
+            'nama_bahan' => $nama_bahan,
+            'stok' => $stok
       );
-      $this->M_gudang->insert('tb_satuan',$data);
+      $this->M_gudang->insert('tb_bahan',$data);
 
-      $this->session->set_flashdata('msg_berhasil','Data satuan Berhasil Ditambahkan');
+      $this->session->set_flashdata('msg_berhasil','Stok Barang Berhasil Ditambahkan');
       redirect(base_url('gudang/form_satuan'));
     }else {
       $this->load->view('gudang/form_satuan/form_insert');
@@ -190,26 +231,26 @@ class Gudang extends CI_Controller{
 
   public function proses_satuan_update()
   {
-    $this->form_validation->set_rules('kode_satuan','Kode Satuan','trim|required|max_length[100]');
-    $this->form_validation->set_rules('nama_satuan','Nama Satuan','trim|required|max_length[100]');
+    $this->form_validation->set_rules('nama_bahan','nama_bahan','trim|required|max_length[100]');
+    $this->form_validation->set_rules('stok','stok','trim|required|max_length[100]');
 
     if($this->form_validation->run() ==  TRUE)
     {
-      $id_satuan   = $this->input->post('id_satuan' ,TRUE);
-      $kode_satuan = $this->input->post('kode_satuan' ,TRUE);
-      $nama_satuan = $this->input->post('nama_satuan' ,TRUE);
+      $id_bahan   = $this->input->post('id_bahan' ,TRUE);
+      $nama_bahan = $this->input->post('nama_bahan' ,TRUE);
+      $stok = $this->input->post('stok' ,TRUE);
 
       $where = array(
-            'id_satuan' => $id_satuan
+            'id_bahan' => $id_bahan
       );
 
       $data = array(
-            'kode_satuan' => $kode_satuan,
-            'nama_satuan' => $nama_satuan
+            'nama_bahan' => $nama_bahan,
+            'stok' => $stok
       );
-      $this->M_gudang->update('tb_satuan',$data,$where);
+      $this->M_gudang->update('tb_bahan',$data,$where);
 
-      $this->session->set_flashdata('msg_berhasil','Data satuan Berhasil Di Update');
+      $this->session->set_flashdata('msg_berhasil','Data barang Berhasil Di Update');
       redirect(base_url('gudang/tabel_satuan'));
     }else {
       $this->load->view('gudang/form_satuan/form_update');
@@ -243,22 +284,32 @@ class Gudang extends CI_Controller{
       $id_transaksi   = $this->input->post('id_transaksi',TRUE);
       $tanggal_masuk  = $this->input->post('tanggal',TRUE);
       $tanggal_keluar = $this->input->post('tanggal_keluar',TRUE);
-      $lokasi         = $this->input->post('lokasi',TRUE);
       $kode_barang    = $this->input->post('kode_barang',TRUE);
+      $jenis_tas      = $this->input->post('jenis_tas',TRUE);
+      $nama_bahan     = $this->input->post('nama_bahan',TRUE);
+      $type_sleting   = $this->input->post('type_sleting',TRUE);
+      $bag_depan      = $this->input->post('bag_depan',TRUE);
+      $bag_belakang   = $this->input->post('bag_belakang',TRUE);
       $nama_barang    = $this->input->post('nama_barang',TRUE);
       $satuan         = $this->input->post('satuan',TRUE);
       $jumlah         = $this->input->post('jumlah',TRUE);
+      $total_harga    = $this->input->post('total_harga',TRUE);
 
       $where = array( 'id_transaksi' => $id_transaksi);
       $data = array(
               'id_transaksi' => $id_transaksi,
               'tanggal_masuk' => $tanggal_masuk,
               'tanggal_keluar' => $tanggal_keluar,
-              'lokasi' => $lokasi,
               'kode_barang' => $kode_barang,
               'nama_barang' => $nama_barang,
+              'jenis_tas'    => $jenis_tas,
+              'nama_bahan'   => $nama_bahan,
+              'type_sleting' => $type_sleting,
+              'bag_depan'    => $bag_depan,
+              'bag_belakang' => $bag_belakang,
               'satuan' => $satuan,
-              'jumlah' => $jumlah
+              'jumlah' => $jumlah,
+              'total_harga' => $total_harga
       );
         $this->M_gudang->insert('tb_barang_keluar',$data);
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');

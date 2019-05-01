@@ -133,8 +133,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('kasir/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?= base_url('kasir/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
+            <li><a href="<?= base_url('kasir/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Pesanan Masuk</a></li>
+            <!-- <li><a href="<?= base_url('kasir/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
           </ul>
         </li>
         <li class="treeview active">
@@ -145,9 +145,9 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
-            <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li class="active"><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i>Pesanan Masuk</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Pesanan Keluar</a></li>
+            <!-- <li><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li> -->
           </ul>
         </li>
         <li class="header">LABELS</li>
@@ -243,6 +243,7 @@
                 <label for="jumlah" style="width:73%;margin-left:33px;">Jumlah</label>
                 <input type="number" name="jumlah" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah" max="<?=$d->jumlah?>" value="<?=$d->jumlah?>">
             </div>
+            
             <?php } ?>
               <!-- /.box-body -->
 

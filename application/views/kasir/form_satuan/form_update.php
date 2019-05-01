@@ -145,9 +145,9 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
-            <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li class="active"><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Pesanan Keluar</a></li>
+            <!-- <li class="active"><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li> -->
           </ul>
         </li>
         <li>

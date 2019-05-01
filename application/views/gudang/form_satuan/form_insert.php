@@ -132,8 +132,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li class="active"><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
+            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li> -->
+            <li class="active"><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
           </ul>
         </li>
         <li class="treeview ">
@@ -146,7 +146,7 @@
           <ul class="treeview-menu">
             <li><a href="<?= base_url('gudang/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
             <li><a href="<?= base_url('gudang/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
           </ul>
         </li>
         <li>
@@ -186,7 +186,7 @@
             <!-- general form elements -->
           <div class="box box-primary" style="width:94%;">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Satuan Barang</h3>
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Stok Bahan</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -209,12 +209,12 @@
 
               <div class="box-body">
                 <div class="form-group" style="display:inline-block;">
-                  <label for="kode_satuan" style="width:87%;margin-left: 12px;">Kode Satuan</label>
-                  <input type="text" name="kode_satuan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_satuan" placeholder="Kode Satuan">
+                  <label for="kode_satuan" style="width:87%;margin-left: 12px;">Nama Stok</label>
+                  <input type="text" name="nama_bahan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_satuan" placeholder="Nama Bahan">
                 </div>
                 <div class="form-group" style="display:inline-block;">
-                  <label for="nama_satuan" style="width:73%;">Nama Satuan</label>
-                  <input type="text" name="nama_satuan" style="width:90%;margin-right: 67px;" class="form-control" id="nama_satuan" placeholder="Nama Satuan">
+                  <label for="nama_satuan" style="width:73%;">Banyak Stok</label>
+                  <input type="text" name="stok" style="width:90%;margin-right: 67px;" class="form-control" id="nama_satuan" placeholder="Banyak Stok">
               </div>
               <div class="form-group" style="display:inline-block;">
                 <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:20px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>

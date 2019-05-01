@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Kasir | Table Satuan</title>
+  <title>gudang | Table Satuan</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -38,11 +38,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url('admin')?>" class="logo">
+    <a href="<?php echo base_url('gudang')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>kasir</b>LTE</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -60,7 +60,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <?php foreach($avatar as $a){ ?>
-              <img src="<?php echo base_url('assets/gudang/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
+              <img src="<?php echo base_url('assets/kasir/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
               <?php } ?>
               <span class="hidden-xs"><?=$this->session->userdata('name')?></span>
             </a>
@@ -68,7 +68,7 @@
               <!-- User image -->
               <li class="user-header">
                 <?php foreach($avatar as $a){ ?>
-                <img src="<?php echo base_url('assets/gudang/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url('assets/kasir/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
                 <?php } ?>
                 <p>
                   <?=$this->session->userdata('name')?> - Web Developer
@@ -101,7 +101,7 @@
       <div class="user-panel">
         <div class="pull-left image">
           <?php foreach($avatar as $a){ ?>
-          <img src="<?php echo base_url('assets/gudang/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url('assets/kasir/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
           <?php } ?>
         </div>
         <div class="pull-left info">
@@ -123,7 +123,7 @@
             </span>
           </a>
           <!-- <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>assets/gudang/web_admin/index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="<?php echo base_url()?>assets/kasir/web_admin/index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
             <li><a href="<?php echo base_url('admin')?>"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul> -->
         </li>
@@ -137,7 +137,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('kasir/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?= base_url('kasir/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
+            <!-- <li><a href="<?= base_url('kasir/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li> -->
           </ul>
         </li>
         <li class="treeview active">
@@ -148,9 +148,9 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
-            <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li class="active"><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Pesanan Keluar</a></li>
+            <li class="active"><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
           </ul>
         </li>
         <li>
@@ -207,10 +207,10 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Kode Satuan</th>
-                  <th>Nama Satuan</th>
-                  <th>Update</th>
-                  <th>Delete</th>
+                  <th>Nama Bahan</th>
+                  <th>Stok</th>
+                  <!-- <th>Update</th>
+                  <th>Delete</th> -->
                 </tr>
                 </thead>
                 <tbody>
@@ -219,10 +219,10 @@
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->kode_satuan?></td>
-                    <td><?=$dd->nama_satuan?></td>
-                    <td><a type="button" class="btn btn-info"  href="<?=base_url('kasir/update_satuan/'.$dd->id_satuan)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('kasir/delete_satuan/'.$dd->id_satuan)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <td><?=$dd->nama_bahan?></td>
+                    <td><?=$dd->stok?></td>
+                    <!-- <td><a type="button" class="btn btn-info"  href="<?=base_url('kasir/update_satuan/'.$dd->id_bahan)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('kasir/delete_satuan/'.$dd->id_bahan)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td> -->
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
@@ -233,8 +233,8 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>Kode Satuan</th>
-                  <th>Nama Satuan</th>
+                  <th>Nama Bahan</th>
+                  <th>Stok</th>
                 </tr>
                 </tfoot>
               </table>

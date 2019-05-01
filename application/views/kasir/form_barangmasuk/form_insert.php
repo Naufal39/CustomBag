@@ -18,6 +18,11 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/web_admin/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/datetimepicker/css/bootstrap-datetimepicker.css">
+  
+  <script src="<?= base_url('assets/gudang/jquery-2.1.4.min.js') ?>"></script>
+	<script src="<?= base_url('assets/gudang/datatables/js/jquery.dataTables.min.js') ?>"></script>
+	<script src="<?= base_url('assets/gudang/datatables/js/dataTables.bootstrap.js') ?>"></script>
+  <script src="<?= base_url('assets/gudang/maskMoney/jquery.maskMoney.min.js') ?>"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -133,8 +138,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?= base_url('kasir/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?= base_url('kasir/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
+            <li class="active"><a href="<?= base_url('kasir/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Pesanan Masuk</a></li>
+            <!-- <li><a href="<?= base_url('kasir/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
           </ul>
         </li>
         <li class="treeview ">
@@ -145,9 +150,9 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
-            <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Pesanan Keluar</a></li>
+            <!-- <li><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li> -->
           </ul>
         </li>
         <li>
@@ -188,7 +193,7 @@
             <!-- general form elements -->
           <div class="box box-primary" style="width:94%;">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Data Barang Masuk</h3>
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Pesanan Masuk</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -212,56 +217,56 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="id_transaksi" style="margin-left:220px;display:inline;">ID Transaksi</label>
-                  <input type="text" name="id_transaksi" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
+                  <input type="text" name="id_transaksi" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="CB-<?=date("Y");?><?=random_string('numeric', 8);?>">
                 </div>
                 <div class="form-group">
                   <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal</label>
                   <input type="text" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
                 </div>
-                <div class="form-group" style="margin-bottom:40px;">
-                  <label for="nama_barang" style="margin-left:220px;display:inline;">Lokasi</label>
-                  <select class="form-control" name="lokasi" style="margin-left:75px;width:20%;display:inline;">
-                    <option value="">-- Pilih --</option>
-                    <option value="Aceh">Aceh</option>
-                    <option value="Bali">Bali</option>
-                    <option value="Bengkulu">Bengkulu</option>
-                    <option value="Jakarta">Jakarta Raya</option>
-                    <option value="Jambi">Jambi</option>
-                    <option value="Jawa Tengah">Jawa Tengah</option>
-                    <option value="Jawa Timur">Jawa Timur</option>
-                    <option value="Jawa Barat">Jawa Barat</option>
-                    <option value="Papua">Papua</option>
-                    <option value="Yogyakarta">Yogyakarta</option>
-                    <option value="Kalimantan Barat">Kalimantan Barat</option>
-                    <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                    <option value="Kalimantan Tengah">Kalimantan Tengah</option>
-                    <option value="Kalimantan Timur">Kalimantan Timur</option>
-                    <option value="Lampung">Lampung</option>
-                    <option value="NTB">Nusa Tenggara Barat</option>
-                    <option value="NTT">Nusa Tenggara Timur</option>
-                    <option value="Riau">Riau</option>
-                    <option value="Sulawesi Selatan">Sulawesi Selatan</option>
-                    <option value="Sulawesi Tengah">Sulawesi Tengah</option>
-                    <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
-                    <option value="Sumatera Barat">Sumatera Barat</option>
-                    <option value="Sumatera Utara">Sumatera Utara</option>
-                    <option value="Maluku">Maluku</option>
-                    <option value="Maluku Utara">Maluku Utara</option>
-                    <option value="Sulawesi Utara">Sulawesi Utara</option>
-                    <option value="Sulawesi Selatan">Sumatera Selatan</option>
-                    <option value="Banten">Banten</option>
-                    <option value="Gorontalo">Gorontalo</option>
-                    <option value="Bangka">Bangka Belitung</option>
-                  </select>
-                </div>
                 <div class="form-group" style="display:inline-block;">
                   <label for="kode_barang" style="width:87%;margin-left: 12px;">Kode Barang / Barcode</label>
-                  <input type="text" name="kode_barang" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_barang" placeholder="Kode Barang">
+                  <input type="text" name="kode_barang" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_barang" readonly="readonly" value="<?=random_string('numeric', 7);?>">
                 </div>
                 <div class="form-group" style="display:inline-block;">
                   <label for="nama_Barang" style="width:73%;">Nama Barang</label>
                   <input type="text" name="nama_barang" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Nama Barang">
               </div>
+              
+               <div class="form-group" style="display:inline-block;">
+                  <label for="satuan" style="width:73%;">Jenis Tas</label>
+                  <select class="form-control" name="jenis_tas" style="width:90%;margin-right: 67px;">
+                    <option value="" selected="">-- Pilih --</option>
+                    <?php foreach($list_tas as $t){ ?>
+                    <option value="<?=$t->nama_tas?>"><?=$t->nama_tas?></option>
+                    <?php } ?>
+                  </select>
+              </div>
+              
+             <div class="form-group" style="display:inline-block;">
+                  <label for="satuan" style="width:73%;">Nama Bahan</label>
+                  <select class="form-control" name="nama_bahan" style="width:110%;margin-right: 18px;">
+                    <option value="" selected="">-- Pilih --</option>
+                    <?php foreach($list_bahan as $d){ ?>
+                    <option value="<?=$d->nama_bahan?>"><?=$d->nama_bahan?></option>
+                    <?php } ?>
+                  </select>
+              </div>
+              <div class="box-body">
+              <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Type Sleting</label>
+                  <input type="text" name="type_sleting" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Type Sleting">
+              </div>
+              <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Bagian Depan</label>
+                  <input type="text" name="bag_depan" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Bagian Depan">
+              </div>
+              <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Bagian Belakang</label>
+                  <input type="text" name="bag_belakang" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Bagian Belakang">
+              </div>
+              </div>
+              <div class="box-body">
+              
                 <div class="form-group" style="display:inline-block;">
                   <label for="satuan" style="width:73%;">Satuan</label>
                   <select class="form-control" name="satuan" style="width:110%;margin-right: 18px;">
@@ -273,11 +278,21 @@
               </div>
               <div class="form-group" style="display:inline-block;">
                 <label for="jumlah" style="width:73%;margin-left:33px;">Jumlah</label>
-                <input type="number" name="jumlah" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah">
+                <input type="number" name="jumlah" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah" autocomplete="off" onchange="subTotal(this.value)" 
+				        	onkeyup="subTotal(this.value)">
             </div>
             <div class="form-group" style="display:inline-block;">
-              <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                  <label for="nama_Barang" style="width:73%;">Total Harga</label>
+                  <input type="text" name="total_harga" style="width:90%;margin-right: px;" class="form-control" id="nama_Barang" placeholder="Total Harga">
+              </div>
+              <div class="form-group" style="display:inline-block;">
+              <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
             </div>
+              </div>
+              <div class="box-body">
+              </div>
+              
+            
               <!-- /.box-body -->
               <div class="box-footer" style="width:93%;">
                 <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
@@ -537,7 +552,7 @@
 
   <script type="text/javascript">
       $(".form_datetime").datetimepicker({
-        format: 'dd/mm/yyyy',
+        format: 'yyyy-mm-dd',
         autoclose: true,
         todayBtn: true,
         pickTime: false,
@@ -545,5 +560,191 @@
         maxView: 4,
       });
   </script>
+
+  <script type="text/javascript">
+
+	function showBarang(str) 
+	{
+
+	    if (str == "") {
+	        $('#nama_bahan').val('');
+	        $('#harga_bahan').val('');
+	        $('#jumlah').val('');
+	        $('#sub_total').val('');
+	        $('#reset').hide();
+	        return;
+	    } else { 
+	      if (window.XMLHttpRequest) {
+	          // code for IE7+, Firefox, Chrome, Opera, Safari
+	           xmlhttp = new XMLHttpRequest();
+	      } else {
+	          // code for IE6, IE5
+	          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	      }
+	      xmlhttp.onreadystatechange = function() {
+	           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	              document.getElementById("barang").innerHTML = 
+	              xmlhttp.responseText;
+	          }
+	      }
+	      xmlhttp.open("GET", "<?= base_url(
+	        '/kasir/getbarang') ?>/"+str,true);
+	      xmlhttp.send();
+	    }
+	}
+
+	function subTotal(jumlah)
+	{
+
+		var harga = $('#harga_bahan').val().replace(".", "").replace(".", "");
+
+		$('#sub_total').val(convertToRupiah(harga*jumlah));
+	}
+
+	function convertToRupiah(angka)
+	{
+
+	    var rupiah = '';    
+	    var angkarev = angka.toString().split('').reverse().join('');
+	    
+	    for(var i = 0; i < angkarev.length; i++) 
+	      if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+	    
+	    return rupiah.split('',rupiah.length-1).reverse().join('');
+	
+	}
+
+	var table;
+    $(document).ready(function() {
+
+      showKembali($('#bayar').val());
+
+      table = $('#table_transaksi').DataTable({ 
+        paging: false,
+        "info": false,
+        "searching": false,
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' 
+        // server-side processing mode.
+        
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?= site_url('kasir/ajax_list_transaksi')?>",
+            "type": "POST"
+        },
+
+        //Set column definition initialisation properties.
+        "columnDefs": [
+        { 
+          "targets": [ 0,1,2,3,4,5,6 ], //last column
+          "orderable": false, //set not orderable
+        },
+        ],
+
+      });
+    });
+
+    function reload_table()
+    {
+
+      table.ajax.reload(null,false); //reload datatable ajax 
+    
+    }
+
+    function addbarang()
+    {
+        var id_barang = $('#id_bahan').val();
+        var jumlah = $('#jumlah').val();
+        if (id_bahan == '') {
+          $('#id_bahan').focus();
+        }else if(jumlah == ''){
+          $('#jumlah').focus();
+        }else{
+       // ajax adding data to database
+          $.ajax({
+            url : "<?= site_url('kasir/addbarang')?>",
+            type: "POST",
+            data: $('#form_transaksi').serialize(),
+            dataType: "JSON",
+            success: function(data)
+            {
+               //reload ajax table
+               reload_table();
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error adding data');
+            }
+        });
+
+          showTotal();
+          showKembali($('#bayar').val());
+          //mereset semua value setelah btn tambah ditekan
+          $('.reset').val('');
+        };
+    }
+
+    function deletebarang(id,sub_total)
+    {
+        // ajax delete data to database
+          $.ajax({
+            url : "<?= site_url('kasir/deletebarang')?>/"+id,
+            type: "POST",
+            dataType: "JSON",
+            success: function(data)
+            {
+               reload_table();
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error deleting data');
+            }
+        });
+
+          var ttl = $('#total').val().replace(".", "");
+
+          $('#total').val(convertToRupiah(ttl-sub_total));
+
+          showKembali($('#bayar').val());
+    }
+
+    function showTotal()
+    {
+
+    	var total = $('#total').val().replace(".", "").replace(".", "");
+
+    	var sub_total = $('#sub_total').val().replace(".", "").replace(".", "");
+
+    	$('#total').val(convertToRupiah((Number(total)+Number(sub_total))));
+
+  	}
+
+  	//maskMoney
+	$('.uang').maskMoney({
+		thousands:'.', 
+		decimal:',', 
+		precision:0
+	});
+
+	function showKembali(str)
+  	{
+	    var total = $('#total').val().replace(".", "").replace(".", "");
+	    var bayar = str.replace(".", "").replace(".", "");
+	    var kembali = bayar-total;
+
+	    $('#kembali').val(convertToRupiah(kembali));
+
+	    if (kembali >= 0) {
+	      $('#selesai').removeAttr("disabled");
+	    }else{
+	      $('#selesai').attr("disabled","disabled");
+	    };
+
+	    if (total == '0') {
+	      $('#selesai').attr("disabled","disabled");
+	    };
+  	}
+
+	</script>
   </body>
   </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>gudang | Table Satuan</title>
+  <title>gudang | Table Stok Bahan</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -136,8 +136,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
+            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li> -->
+            <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
           </ul>
         </li>
         <li class="treeview active">
@@ -150,7 +150,7 @@
           <ul class="treeview-menu">
             <li><a href="<?= base_url('gudang/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
             <li><a href="<?= base_url('gudang/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li class="active"><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li class="active"><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
           </ul>
         </li>
         <li>
@@ -173,7 +173,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tabel Satuan
+        Tabel Stok Bahan
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?=base_url('gudang')?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -207,8 +207,8 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Kode Satuan</th>
-                  <th>Nama Satuan</th>
+                  <th>Nama Bahan</th>
+                  <th>Stok</th>
                   <th>Update</th>
                   <th>Delete</th>
                 </tr>
@@ -219,10 +219,10 @@
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->kode_satuan?></td>
-                    <td><?=$dd->nama_satuan?></td>
-                    <td><a type="button" class="btn btn-info"  href="<?=base_url('gudang/update_satuan/'.$dd->id_satuan)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('gudang/delete_satuan/'.$dd->id_satuan)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <td><?=$dd->nama_bahan?></td>
+                    <td><?=$dd->stok?></td>
+                    <td><a type="button" class="btn btn-info"  href="<?=base_url('gudang/update_satuan/'.$dd->id_bahan)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('gudang/delete_satuan/'.$dd->id_bahan)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
@@ -233,8 +233,8 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>Kode Satuan</th>
-                  <th>Nama Satuan</th>
+                  <th>Nama Bahan</th>
+                  <th>Stok</th>
                 </tr>
                 </tfoot>
               </table>
