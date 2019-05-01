@@ -67,7 +67,7 @@
             <br /><br />
         </div>
         <button type="submit">Tampilkan</button>
-        <a href="<?php echo base_url('admin/transaksi'); ?>">Reset Filter</a>
+        <a href="<?php echo base_url('admin/transaksi1'); ?>">Reset Filter</a>
     </form>
     <hr />
     
@@ -94,13 +94,13 @@
         echo "<td>".$data->nama_barang."</td>";
         echo "<td>".$data->jenis_tas."</td>";
         echo "<td>".$data->jumlah."</td>";
-        echo "<td>".number_format($data->total_harga, 0, ',', '.')."</td>";
+        echo "<td>Rp. ".number_format($data->total_harga, 0, ',', '.')."</td>";
         echo "</tr>";
         $no++;
       }
       echo '<tr>
 		<td colspan="5"><b>Total Pendapatan</b></td>
-		<td>' . number_format($total_untung, 0, ',', '.') . '</td>
+		<td>Rp. ' . number_format($total_untung, 0, ',', '.') . '</td>
 	 </tr>';
     }
     

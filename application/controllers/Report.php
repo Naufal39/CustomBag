@@ -68,7 +68,7 @@ class Report extends CI_Controller
             <th style="width:140px" align="center">Nama Barang</th>
             <th style="width:80px" align="center">Satuan</th>
             <th style="width:80px" align="center">Jumlah</th>
-            <th style="width:80px" align="center">Total Harga</th>
+            <th style="width:180px" align="center">Total Harga</th>
           </tr>';
 
         $html .= '<tr>
@@ -162,7 +162,7 @@ class Report extends CI_Controller
             <th style="width:140px" align="center">Nama Barang</th>
             <th style="width:80px" align="center">Satuan</th>
             <th style="width:80px" align="center">Jumlah</th>
-            <th style="width:80px" align="center">Total Harga</th>
+            <th style="width:180px" align="center">Total Harga</th>
           </tr>';
 
 
@@ -179,12 +179,12 @@ class Report extends CI_Controller
             $html .= '<td align="center">'.$row->nama_barang.'</td>';
             $html .= '<td align="center">'.$row->satuan.'</td>';
             $html .= '<td align="center">'.$row->jumlah.'</td>';
-            $html .= '<td align="center">'.$row->total_harga.'</td>';
+            $html .= '<td align="center">Rp. ' . number_format($row->total_harga, 0, ',', '.') . '</td>';
             $html .= '</tr>';
 
             $html .= '<tr>';
             $html .= '<td align="center" colspan="8"><b>Total Harga</b></td>';
-            $html .= '<td align="center">' . number_format($row->$total_harga, 0, ',', '.') . '</td>';
+            $html .= '<td align="center">Rp. ' . number_format($row->total_harga, 0, ',', '.') . '</td>';
             $html .= '</tr>';
             $no++;
           }
