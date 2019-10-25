@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Bulan Mei 2019 pada 03.58
+-- Waktu pembuatan: 03 Okt 2019 pada 10.18
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -41,7 +41,7 @@ CREATE TABLE `tb_bahan` (
 --
 
 INSERT INTO `tb_bahan` (`id_bahan`, `nama_bahan`, `stok`, `harga_bahan`, `harga_total`) VALUES
-(1, 'Leather - Nabati', 55, 5000, 2500000),
+(1, 'Leather - Nabati', 60, 5000, 2500000),
 (2, 'Leather - Chrome', 55, 0, 0),
 (3, 'Leather - PullUp', 55, 0, 0),
 (4, 'Leather - Suede', 55, 0, 0),
@@ -65,7 +65,6 @@ CREATE TABLE `tb_barang_keluar` (
   `kode_barang` varchar(100) NOT NULL,
   `nama_barang` varchar(100) NOT NULL,
   `jenis_tas` varchar(200) NOT NULL,
-  `nama_bahan` varchar(200) NOT NULL,
   `type_sleting` varchar(155) NOT NULL,
   `bag_depan` varchar(100) NOT NULL,
   `bag_belakang` varchar(100) NOT NULL,
@@ -78,9 +77,14 @@ CREATE TABLE `tb_barang_keluar` (
 -- Dumping data untuk tabel `tb_barang_keluar`
 --
 
-INSERT INTO `tb_barang_keluar` (`id`, `id_transaksi`, `tanggal_masuk`, `tanggal_keluar`, `lokasi`, `kode_barang`, `nama_barang`, `jenis_tas`, `nama_bahan`, `type_sleting`, `bag_depan`, `bag_belakang`, `satuan`, `jumlah`, `total_harga`) VALUES
-(30, 'CB-201990168357', '2019-05-01 00:00:00', '2019-06-02 00:00:00', '', '1234568', 'tas hitamku', 'TAS SEMINAR', 'Leather - PullUp', 'sleting2', 'depan', 'belakang', 'Pcs', '15', 500000),
-(31, 'CB-201914378905', '2019-05-01 00:00:00', '2019-05-01 00:00:00', '', '7508462', 'Tas Lepi', 'TAS KANVAS', 'Leather - Nabati', 'sleting', 'depan211', 'belakang1', 'Pcs', '50', 48965);
+INSERT INTO `tb_barang_keluar` (`id`, `id_transaksi`, `tanggal_masuk`, `tanggal_keluar`, `lokasi`, `kode_barang`, `nama_barang`, `jenis_tas`, `type_sleting`, `bag_depan`, `bag_belakang`, `satuan`, `jumlah`, `total_harga`) VALUES
+(30, 'CB-201990168357', '2019-05-01 00:00:00', '2019-06-02 00:00:00', '', '1234568', 'tas hitamku', 'TAS SEMINAR', 'sleting2', 'depan', 'belakang', 'Pcs', '15', 500000),
+(31, 'CB-201914378905', '2019-05-01 00:00:00', '2019-05-01 00:00:00', '', '7508462', 'Tas Lepi', 'TAS KANVAS', 'sleting', 'depan211', 'belakang1', 'Pcs', '50', 48965),
+(32, 'CB-201972095643', '2019-05-06 00:00:00', '2019-05-06 00:00:00', '', '2416307', 'tas hitamku', 'TAS SEKOLAH', 'sleting2', 'depan', 'belakang122', 'Pcs', '33', 500000),
+(33, 'CB-201914378905', '2019-05-01 00:00:00', '2019-05-06 00:00:00', '', '7508462', 'Tas Lepi', 'TAS KANVAS', 'sleting', 'depan211', 'belakang1', 'Pcs', '4', 48965),
+(34, 'CB-201901728593', '2019-04-29 00:00:00', '1931-11-13 00:00:00', '', '1637425', 'tas hitamku', 'TAS RANSEL', 'sleting2', 'Leather - Nabati', 'Leather - Chrome', 'Pcs', '3', 500000),
+(35, 'CB-201972389104', '0000-00-00 00:00:00', '2019-09-26 00:00:00', '', '1845793', 'tas hitamku', 'TAS KOPER', 'yes', 'Leather - Nabati', 'Leather - Chrome', 'Pcs', '1', 300000),
+(36, 'CB-201934860517', '2019-09-26 00:00:00', '2019-10-03 00:00:00', '', '9510842', 'Tas gunung2', 'TAS TRAVEL', 'yes', 'Leather - Chrome', 'Polyester', 'Pcs', '5', 300000);
 
 --
 -- Trigger `tb_barang_keluar`
@@ -108,7 +112,6 @@ CREATE TABLE `tb_barang_masuk` (
   `kode_barang` varchar(100) NOT NULL,
   `nama_barang` varchar(100) NOT NULL,
   `jenis_tas` varchar(200) NOT NULL,
-  `nama_bahan` varchar(200) NOT NULL,
   `type_sleting` varchar(155) NOT NULL,
   `bag_depan` varchar(100) NOT NULL,
   `bag_belakang` varchar(100) NOT NULL,
@@ -121,8 +124,9 @@ CREATE TABLE `tb_barang_masuk` (
 -- Dumping data untuk tabel `tb_barang_masuk`
 --
 
-INSERT INTO `tb_barang_masuk` (`id_transaksi`, `tanggal`, `lokasi`, `kode_barang`, `nama_barang`, `jenis_tas`, `nama_bahan`, `type_sleting`, `bag_depan`, `bag_belakang`, `satuan`, `jumlah`, `total_harga`) VALUES
-('CB-201914378905', '2019-05-01', '', '7508462', 'Tas Lepi', 'TAS KANVAS', 'Leather - Nabati', 'sleting', 'depan211', 'belakang1', 'Pcs', '4', 48965);
+INSERT INTO `tb_barang_masuk` (`id_transaksi`, `tanggal`, `lokasi`, `kode_barang`, `nama_barang`, `jenis_tas`, `type_sleting`, `bag_depan`, `bag_belakang`, `satuan`, `jumlah`, `total_harga`) VALUES
+('CB-201934860517', '2019-09-26', '', '9510842', 'Tas gunung2', 'TAS TRAVEL', 'yes', 'Leather - Chrome', 'Polyester', 'Pcs', '2', 300000),
+('CB-201972389104', '', '', '1845793', 'tas hitamku', 'TAS KOPER', 'yes', 'Leather - Nabati', 'Leather - Chrome', 'Pcs', '1', 300000);
 
 -- --------------------------------------------------------
 
@@ -131,28 +135,61 @@ INSERT INTO `tb_barang_masuk` (`id_transaksi`, `tanggal`, `lokasi`, `kode_barang
 --
 
 CREATE TABLE `tb_product` (
+  `product_id` int(11) NOT NULL,
+  `nama_product` varchar(255) NOT NULL,
+  `jenis_tas` varchar(155) NOT NULL,
+  `bag_depan` varchar(155) NOT NULL,
+  `bag_belakang` varchar(155) NOT NULL,
+  `price` int(155) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_product_permintaan`
+--
+
+CREATE TABLE `tb_product_permintaan` (
   `product_id` varchar(64) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `jenis_tas` varchar(155) DEFAULT NULL,
-  `nama_bahan` varchar(155) DEFAULT NULL,
-  `type_sleting` varchar(155) DEFAULT NULL,
-  `bag_depan` varchar(155) DEFAULT NULL,
-  `bag_belakang` varchar(155) DEFAULT NULL,
-  `price` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL DEFAULT 'default.jpg',
+  `harga_produksi` int(11) NOT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `tb_product`
+-- Struktur dari tabel `tb_product_template`
 --
 
-INSERT INTO `tb_product` (`product_id`, `name`, `jenis_tas`, `nama_bahan`, `type_sleting`, `bag_depan`, `bag_belakang`, `price`, `image`, `description`) VALUES
-('5c9a2abb29b09', 'user', NULL, NULL, NULL, NULL, NULL, 1231, 'default.jpg', '4123hahaha'),
-('5c9a2c3e57cba', 'asdaxfhdfg', NULL, NULL, NULL, NULL, NULL, 12412, '5c9a2c3e57cba.png', 'wgsdfs'),
-('5c9e4ced3dbe3', 'Tas Hitam', NULL, NULL, NULL, NULL, NULL, 1000, '5c9e4ced3dbe3.png', 'Produk Sangat Baik '),
-('5ca62998d1e58', 'admin1', NULL, NULL, NULL, NULL, NULL, 56565656, '5ca62998d1e58.png', 'jadiiiiiiiiiiiiiiii'),
-('5ca62f3937784', 'Tas Merah', NULL, NULL, NULL, NULL, NULL, 15964, '5ca62f3937784.png', 'Tst Jadiii');
+CREATE TABLE `tb_product_template` (
+  `id_template` int(64) NOT NULL,
+  `id_template_product` varchar(200) NOT NULL,
+  `nama_template` varchar(255) NOT NULL,
+  `jenis_tas` varchar(191) NOT NULL,
+  `type_sleting` varchar(155) NOT NULL,
+  `bag_depan` varchar(155) NOT NULL,
+  `bag_belakang` varchar(155) NOT NULL,
+  `unit_depan` int(11) NOT NULL,
+  `unit_belakang` int(11) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_product_template`
+--
+
+INSERT INTO `tb_product_template` (`id_template`, `id_template_product`, `nama_template`, `jenis_tas`, `type_sleting`, `bag_depan`, `bag_belakang`, `unit_depan`, `unit_belakang`, `photo`, `deskripsi`) VALUES
+(18, 'TP-31827', 'taskuq', 'TAS RANSEL', 'yes', 'Leather - Suede', 'Leather - Chrome', 1, 1, 'default.jpg', 'hahahahahaha'),
+(19, 'TP-67928', 'taskuq', 'TAS LAPTOP', 'yes', 'Leather - Nabati', 'Leather - Chrome', 1, 1, '', 'hahahahahaha'),
+(20, 'TP-28701', 'tasku', 'TAS SEKOLAH', 'no', 'Leather - Nabati', 'Leather - Chrome', 1, 1, '', 'hahahahahaha'),
+(21, 'TP-41296', 'tasku', 'TAS RANSEL', 'yes', 'Leather - Chrome', 'Polyester', 1, 1, '', 'qweqwe'),
+(22, 'TP-14765', 'tasku', 'TAS RANSEL', 'yes', 'Leather - PullUp', 'Leather - Chrome', 1, 1, 'default.jpg', 'qweqwe'),
+(23, 'TP-14765', 'tasku', 'TAS RANSEL', 'yes', 'Leather - PullUp', 'Leather - Chrome', 1, 1, 'default.jpg', 'qweqwe'),
+(24, 'TP-14765', 'tasku', 'TAS RANSEL', 'yes', 'Leather - PullUp', 'Leather - Chrome', 1, 1, 'default.jpg', 'qweqwe'),
+(25, 'TP-87253', 'taskuq89', 'TAS RANSEL', 'no', 'Leather - Nabati', 'Leather - Nabati', 3, 4, '', 'zzzzzzzzzzzz');
 
 -- --------------------------------------------------------
 
@@ -327,6 +364,24 @@ ALTER TABLE `tb_barang_masuk`
   ADD PRIMARY KEY (`id_transaksi`);
 
 --
+-- Indeks untuk tabel `tb_product`
+--
+ALTER TABLE `tb_product`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indeks untuk tabel `tb_product_permintaan`
+--
+ALTER TABLE `tb_product_permintaan`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indeks untuk tabel `tb_product_template`
+--
+ALTER TABLE `tb_product_template`
+  ADD PRIMARY KEY (`id_template`);
+
+--
 -- Indeks untuk tabel `tb_satuan`
 --
 ALTER TABLE `tb_satuan`
@@ -376,7 +431,19 @@ ALTER TABLE `tb_bahan`
 -- AUTO_INCREMENT untuk tabel `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_product`
+--
+ALTER TABLE `tb_product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_product_template`
+--
+ALTER TABLE `tb_product_template`
+  MODIFY `id_template` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_satuan`

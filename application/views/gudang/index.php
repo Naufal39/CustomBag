@@ -186,7 +186,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <!-- <li><a href="<?php echo base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li> -->
+            <li><a href="<?php echo base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Template Tas </a></li>
             <li><a href="<?php echo base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
           </ul>
         </li>
@@ -198,6 +198,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="<?= base_url('gudang/tabel_template')?>"><i class="fa fa-circle-o"></i> Template tas</a></li>
             <li><a href="<?= base_url('gudang/tabel_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Pesanan Masuk
            
               <span class="label bg-red"><?=$list_data?></span></a></li>

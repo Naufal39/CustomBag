@@ -208,7 +208,7 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('gudang/form_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Masuk</a>
+              <a href="<?=base_url('kasir/form_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Masuk</a>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>

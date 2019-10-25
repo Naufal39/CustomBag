@@ -66,7 +66,6 @@ class Kasir extends CI_Controller{
     $this->form_validation->set_rules('kode_barang','Kode Barang','required');
     $this->form_validation->set_rules('nama_barang','Nama Barang','required');
     $this->form_validation->set_rules('jenis_tas','Jenis Tas','required');
-    $this->form_validation->set_rules('nama_bahan','Nama Bahan','required');
     $this->form_validation->set_rules('type_sleting','Type Sleting','required');
     $this->form_validation->set_rules('bag_depan','Bagian Depan','required');
     $this->form_validation->set_rules('bag_belakang','Bagian Belakang','required');
@@ -79,7 +78,6 @@ class Kasir extends CI_Controller{
       $kode_barang  = $this->input->post('kode_barang',TRUE);
       $nama_barang  = $this->input->post('nama_barang',TRUE);
       $jenis_tas    = $this->input->post('jenis_tas',TRUE);
-      $nama_bahan   = $this->input->post('nama_bahan',TRUE);
       $type_sleting = $this->input->post('type_sleting',TRUE);
       $bag_depan    = $this->input->post('bag_depan',TRUE);
       $bag_belakang = $this->input->post('bag_belakang',TRUE);
@@ -93,7 +91,6 @@ class Kasir extends CI_Controller{
             'kode_barang'  => $kode_barang,
             'nama_barang'  => $nama_barang,
             'jenis_tas'    => $jenis_tas,
-            'nama_bahan'   => $nama_bahan,
             'type_sleting' => $type_sleting,
             'bag_depan'    => $bag_depan,
             'bag_belakang' => $bag_belakang,
@@ -120,7 +117,6 @@ class Kasir extends CI_Controller{
     $this->form_validation->set_rules('nama_barang','Nama Barang','required');
     $this->form_validation->set_rules('jumlah','Jumlah','required');
     $this->form_validation->set_rules('jenis_tas','Jenis Tas','required');
-    $this->form_validation->set_rules('nama_bahan','Nama Bahan','required');
     $this->form_validation->set_rules('type_sleting','Type Sleting','required');
     $this->form_validation->set_rules('bag_depan','Bagian Depan','required');
     $this->form_validation->set_rules('bag_belakang','Bagian Belakang','required');
@@ -133,7 +129,6 @@ class Kasir extends CI_Controller{
       $kode_barang  = $this->input->post('kode_barang',TRUE);
       $nama_barang  = $this->input->post('nama_barang',TRUE);
       $jenis_tas    = $this->input->post('jenis_tas',TRUE);
-      $nama_bahan   = $this->input->post('nama_bahan',TRUE);
       $type_sleting = $this->input->post('type_sleting',TRUE);
       $bag_depan    = $this->input->post('bag_depan',TRUE);
       $bag_belakang = $this->input->post('bag_belakang',TRUE);
@@ -148,7 +143,6 @@ class Kasir extends CI_Controller{
             'kode_barang'  => $kode_barang,
             'nama_barang'  => $nama_barang,
             'jenis_tas'    => $jenis_tas,
-            'nama_bahan'   => $nama_bahan,
             'type_sleting' => $type_sleting,
             'bag_depan'    => $bag_depan,
             'bag_belakang' => $bag_belakang,

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Web Gudang | Data Barang Masuk</title>
+  <title>gudang | Table Stok Bahan</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -12,12 +12,16 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/web_admin/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/web_admin/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/web_admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/web_admin/dist/css/AdminLTE.min.css">
+
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/sweetalert/dist/sweetalert.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/web_admin/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/datetimepicker/css/bootstrap-datetimepicker.css">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -26,7 +30,8 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -54,7 +59,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <?php foreach($avatar as $a){?>
+              <?php foreach($avatar as $a){ ?>
               <img src="<?php echo base_url('assets/gudang/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
               <?php } ?>
               <span class="hidden-xs"><?=$this->session->userdata('name')?></span>
@@ -65,10 +70,9 @@
                 <?php foreach($avatar as $a){ ?>
                 <img src="<?php echo base_url('assets/gudang/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
                 <?php } ?>
-
                 <p>
                   <?=$this->session->userdata('name')?> - Web Developer
-                  <small>Last Login: <?=$this->session->userdata('last_login')?></small>
+                  <small>Last Login : <?=$this->session->userdata('last_login')?></small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -76,10 +80,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= base_url('gudang/profile')?>" class="btn btn-default btn-flat"><i class="fa fa-cogs" aria-hidden="true"></i> Profile</a>
+                  <a href="#" class="btn btn-default btn-flat"><i class="fa fa-cogs" aria-hidden="true"></i> Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= base_url('gudang/sigout')?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+                  <a href="<?= base_url('gudang/sigout')?>" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -90,7 +94,6 @@
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -121,11 +124,11 @@
           </a>
           <!-- <ul class="treeview-menu">
             <li><a href="<?php echo base_url()?>assets/gudang/web_admin/index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="<?php echo base_url()?>assets/gudang/web_admin/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="<?php echo base_url('admin')?>"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul> -->
         </li>
 
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <span class="pull-right-container">
@@ -133,13 +136,11 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <!-- <li class="active"><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>-->
-            <!-- <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>  -->
-            <li><a href="<?php echo base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Template Tas </a></li>
-            <li><a href="<?php echo base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
+            <!-- <li><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li> -->
+            <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
           </ul>
         </li>
-        <li class="treeview ">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
@@ -149,7 +150,7 @@
           <ul class="treeview-menu">
             <li><a href="<?= base_url('gudang/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
             <li><a href="<?= base_url('gudang/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
+            <li class="active"><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
           </ul>
         </li>
         <li>
@@ -172,147 +173,79 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Input Template Tas
+        Tabel Template
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">Data Barang Masuk</li>
+        <li><a href="<?=base_url('gudang')?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li>Tables</li>
+        <li class="active"><a href="<?=base_url('gudang/tabel_satuan')?>">Tabel Template</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <!-- left column -->
-        <div class="col-md-12">
-          <div class="container">
-            <!-- general form elements -->
-          <div class="box box-primary" style="width:94%;">
-            <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Template Tas</h3>
+        <div class="col-xs-12">
+
+          <!-- /.box -->
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> Template Tas Custom</h3>
             </div>
             <!-- /.box-header -->
-            <!-- form start -->
-            <div class="container">
-            <form action="<?=base_url('gudang/proses_template_masuk_insert')?>" method="post" enctype="multipart/form-data">
+            <div class="box-body">
 
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:91%">
+                <div class="alert alert-success alert-dismissible" style="width:100%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
                </div>
               <?php } ?>
 
-              <?php if(validation_errors()){ ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-             </div>
-            <?php } ?>
-
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="id_transaksi" style="margin-left:220px;display:inline;">ID Template</label>
-                  <input type="text" name="id_template_product" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="TP-<?=random_string('numeric', 5);?>">
-                </div>
-                <!-- <div class="form-group">
-                  <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal</label>
-                  <input type="text" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
-                </div> -->
-                <div class="form-group" style="display:inline-block;">
-                  <label for="nama_Barang" style="width:73%;">Nama Barang</label>
-                  <input type="text" name="nama_template" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Nama Barang">
-              </div>
-              <div class="form-group" style="display:inline-block;">
-                  <label for="satuan" style="width:73%;">Jenis Tas</label>
-                  <select class="form-control" name="jenis_tas" style="width:90%;margin-right: 67px;">
-                    <option value="" selected="">-- Pilih --</option>
-                    <?php foreach($list_tas as $t){ ?>
-                    <option value="<?=$t->nama_tas?>"><?=$t->nama_tas?></option>
-                    <?php } ?>
-                  </select>
-              </div>
-              <div class="form-group" style="display:inline-block;">
-                  <label for="satuan" style="width:73%;">Bagian Depan</label>
-                  <select class="form-control" name="bag_depan" style="width:90%;margin-right: 67px;">
-                    <option value="" selected="">-- Pilih --</option>
-                    <?php foreach($list_bahan as $d){ ?>
-                    <option value="<?=$d->nama_bahan?>"><?=$d->nama_bahan?></option>
-                    <?php } ?>
-                  </select>
-              </div>
-              <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:73%;margin-left:33px;">Unit Depan</label>
-                <input type="number" name="unit_depan" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah">
+              <a href="<?=base_url('gudang/form_satuan')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data</a>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Bahan</th>
+                  <th>Stok</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <?php if(is_array($list_temp)){ ?>
+                  <?php $no = 1;?>
+                  <?php foreach($list_temp as $lt): ?>
+                    <td><?=$no?></td>
+                    <td><?=$lt->nama_template?></td>
+                    <td><?=$lt->jenis_tas?></td>
+                    <td><img src="<?=base_url('assets/images/'.$lt->photo)?>" style="width:300px; height:150"></td>
+                    
+                    <!-- <td><a type="button" class="btn btn-info"  href="<?=base_url('gudang/update_satuan/'.$dd->id_bahan)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('gudang/delete_satuan/'.$dd->id_bahan)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td> -->
+                </tr>
+              <?php $no++; ?>
+              <?php endforeach;?>
+              <?php }else { ?>
+                    <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+              <?php } ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Bahan</th>
+                  <th>Stok</th>
+                </tr>
+                </tfoot>
+              </table>
             </div>
-              <div class="form-group" style="display:inline-block;">
-                  <label for="satuan" style="width:73%;">Bagian Belakang</label>
-                  <select class="form-control" name="bag_belakang" style="width:90%;margin-right: 67px;">
-                    <option value="" selected="">-- Pilih --</option>
-                    <?php foreach($list_bahan as $d){ ?>
-                    <option value="<?=$d->nama_bahan?>"><?=$d->nama_bahan?></option>
-                    <?php } ?>
-                  </select>
-              </div>
-              <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:73%;margin-left:33px;">Unit Belakang</label>
-                <input type="number" name="unit_belakang" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah">
-              </div>
-              <div class="form-group" style="display:inline-block;">
-                  <label for="nama_Barang" style="width:73%;">Type Sleting</label>
-                  <input type="text" name="type_sleting" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Type Sleting">
-              </div>
-              <div>
-                
-                <!-- <div class="form-group" style="display:inline-block;">
-                  <label for="photo" style="width:73%;">Insert Photo</label>
-                  <input type="file" name="photo">
-              </div> -->
-              <div class="form-group" style="display:inline-block;">
-                  <label for="deskripsi" style="width:73%;">Deskripsi</label>
-                  <input type="text" name="deskripsi" style="width:90%;margin-right:67px;" class="form-control" id="deskripsi" placeholder="Deskripsi">
-              </div>
-             <div class="box-body">
-            <div class="form-group" style="display:inline-block;">
-              <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
-            </div>
-              <!-- /.box-body -->
-              <div class="box-footer" style="width:93%;">
-                <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <a type="button" class="btn btn-info" style="width:14%;margin-right:29%" href="<?=base_url('gudang/tabel_barangmasuk')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
-                <button type="submit" style="width:20%" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
-              </div>
-            </form>
+            <!-- /.box-body -->
           </div>
-          </div>
-          <!-- /.box -->
-
-          <!-- Form Element sizes -->
-
-          <!-- /.box -->
 
 
-          <!-- /.box -->
-
-          <!-- Input addon -->
-
-          <!-- /.box -->
-
-        </div>
-        <!--/.col (left) -->
-        <!-- right column -->
-        <!-- <div class="col-md-6">
-          <!-- Horizontal Form -->
-
-          <!-- /.box -->
-          <!-- general form elements disabled -->
-
-          <!-- /.box -->
-
-        </div>
-        </div>
-        <!--/.col (right) -->
+        <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
@@ -324,6 +257,7 @@
       <b>Version</b> 2.4.0
     </div>
     <strong>Copyright &copy; <?=date('Y')?></strong>
+    
   </footer>
 
   <!-- Control Sidebar -->
@@ -519,30 +453,64 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-  </div>
-  <!-- ./wrapper -->
+</div>
+<!-- ./wrapper -->
 
-  <!-- jQuery 3 -->
-  <script src="<?php echo base_url()?>assets/gudang/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="<?php echo base_url()?>assets/gudang/web_admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- FastClick -->
-  <script src="<?php echo base_url()?>assets/gudang/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
-  <!-- AdminLTE App -->
-  <script src="<?php echo base_url()?>assets/gudang/web_admin/dist/js/adminlte.min.js"></script>
-  <script src="<?php echo base_url()?>assets/gudang/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<?php echo base_url()?>assets/gudang/web_admin/dist/js/demo.js"></script>
-
-  <script type="text/javascript">
-      $(".form_datetime").datetimepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        todayBtn: true,
-        pickTime: false,
-        minView: 2,
-        maxView: 4,
+<!-- jQuery 3 -->
+<script src="<?php echo base_url()?>assets/gudang/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url()?>assets/gudang/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="<?php echo base_url()?>assets/gudang/web_admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url()?>assets/gudang/web_admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url()?>assets/gudang/web_admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="<?php echo base_url()?>assets/gudang/web_admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url()?>assets/gudang/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url()?>assets/gudang/web_admin/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url()?>assets/gudang/web_admin/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+jQuery(document).ready(function($){
+      $('.btn-delete').on('click',function(){
+          var getLink = $(this).attr('href');
+          swal({
+                  title: 'Delete Data',
+                  text: 'Yakin Ingin Menghapus Data ?',
+                  html: true,
+                  confirmButtonColor: '#d9534f',
+                  showCancelButton: true,
+                  },function(){
+                  window.location.href = getLink
+              });
+          return false;
       });
-  </script>
-  </body>
-  </html>
+  });
+
+  $(function () {
+    $('#example1').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : false
+
+    })
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  });
+
+
+</script>
+</body>
+</html>

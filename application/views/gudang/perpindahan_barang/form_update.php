@@ -227,10 +227,6 @@
                   <label for="nama_Barang" style="width:73%;">Jenis Tas</label>
                   <input type="text" name="jenis_tas" readonly="readonly" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" value="<?=$d->jenis_tas?>">
               </div>
-              <div class="form-group" style="display:inline-block;">
-                  <label for="nama_Barang" style="width:73%;">Nama Bahan</label>
-                  <input type="text" name="nama_bahan" readonly="readonly" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" value="<?=$d->nama_bahan?>">
-              </div>
               <div class="box-body">
               <div class="form-group" style="display:inline-block;">
                   <label for="nama_Barang" style="width:73%;">Type Sleting</label>

@@ -3,6 +3,58 @@
 class M_gudang extends CI_Model
 {
 
+  // private $_table = "tb_product_template";
+  // public function rules()
+  //   {
+  //       return [
+  //           ['field' => 'nama_template',
+  //           'label' => 'Name',
+  //           'rules' => 'required'],
+
+  //           ['field' => 'total_harga',
+  //           'label' => 'Price',
+  //           'rules' => 'numeric'],
+            
+  //           ['field' => 'deskripsi',
+  //           'label' => 'Description',
+  //           'rules' => 'required']
+  //       ];
+  //   }
+  // public function save()
+  //   {
+  //       $post = $this->input->post();
+  //       $this->id_template_product = $post['id_template_product'];
+  //       $this->nama_template = $post["nama_template"];
+  //       $this->jenis_tas = $post["jenis_tas"];
+  //       $this->type_sleting = $post["type_sleting"];
+  //       $this->bag_depan = $post["bag_depan"];
+  //       $this->unit_depan = $post["unit_depan"];
+  //       $this->bag_belakang = $post["bag_belakang"];
+  //       $this->unit_belakang = $post["unit_belakang"];
+  //       $this->photo =$this->_uploadImage();
+  //       $this->deskripsi = $post["deskripsi"];
+  //       $this->db->insert($this->_table, $this);
+  //   }
+
+  //    private function _uploadImage()
+  //   {
+  //   $config['upload_path']          = './upload/product/';
+  //   $config['allowed_types']        = 'gif|jpg|png';
+  //   $config['file_name']            = $this->product_id;
+  //   $config['overwrite']			= true;
+  //   $config['max_size']             = 1024; // 1MB
+  //   // $config['max_width']            = 1024;
+  //   // $config['max_height']           = 768;
+
+  //   $this->load->library('upload', $config);
+
+  //   if ($this->upload->do_upload('image')) {
+  //       return $this->upload->data("file_name");
+  //   }
+    
+  //   return "default.jpg";
+  //   }
+
   public function insert($tabel,$data)
   {
     $this->db->insert($tabel,$data);
