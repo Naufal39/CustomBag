@@ -256,6 +256,11 @@
                   </select>
               </div>
               <div class="form-group" style="display:inline-block;">
+                <label for="jumlah" style="width:73%;margin-left:33px;">Unit Depan</label>
+                <input type="text" name="unit_depan" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="txt2">
+              </div>
+              <br>
+              <div class="form-group" style="display:inline-block;">
                   <label for="satuan" style="width:73%;">Bagian Belakang</label>
                   <select class="form-control" name="bag_belakang" style="width:90%;margin-right: 67px;">
                     <option value="" selected="">-- Pilih --</option>
@@ -263,6 +268,10 @@
                     <option value="<?=$d->nama_bahan?>"><?=$d->nama_bahan?></option>
                     <?php } ?>
                   </select>
+              </div>
+              <div class="form-group" style="display:inline-block;">
+                <label for="jumlah" style="width:73%;margin-left:33px;">Unit Belakang</label>
+                <input type="text" name="unit_belakang" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="txt2">
               </div>
               </div>
               <div class="box-body">

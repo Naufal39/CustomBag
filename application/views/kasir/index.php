@@ -198,6 +198,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="<?= base_url('kasir/tabel_template')?>"><i class="fa fa-circle-o"></i> Template tas</a></li>
             <li><a href="<?= base_url('kasir/tabel_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
             <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Pesanan Keluar <span class="label bg-red"><?=$list_data?></span></a></a></li>
             <li><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>

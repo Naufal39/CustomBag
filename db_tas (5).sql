@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Okt 2019 pada 10.18
+-- Waktu pembuatan: 05 Des 2019 pada 18.07
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -41,8 +41,8 @@ CREATE TABLE `tb_bahan` (
 --
 
 INSERT INTO `tb_bahan` (`id_bahan`, `nama_bahan`, `stok`, `harga_bahan`, `harga_total`) VALUES
-(1, 'Leather - Nabati', 60, 5000, 2500000),
-(2, 'Leather - Chrome', 55, 0, 0),
+(1, 'Leather - Nabati', 54, 5000, 2500000),
+(2, 'Leather - Chrome', 53, 0, 0),
 (3, 'Leather - PullUp', 55, 0, 0),
 (4, 'Leather - Suede', 55, 0, 0),
 (5, 'Polyester', 55, 0, 0),
@@ -84,7 +84,8 @@ INSERT INTO `tb_barang_keluar` (`id`, `id_transaksi`, `tanggal_masuk`, `tanggal_
 (33, 'CB-201914378905', '2019-05-01 00:00:00', '2019-05-06 00:00:00', '', '7508462', 'Tas Lepi', 'TAS KANVAS', 'sleting', 'depan211', 'belakang1', 'Pcs', '4', 48965),
 (34, 'CB-201901728593', '2019-04-29 00:00:00', '1931-11-13 00:00:00', '', '1637425', 'tas hitamku', 'TAS RANSEL', 'sleting2', 'Leather - Nabati', 'Leather - Chrome', 'Pcs', '3', 500000),
 (35, 'CB-201972389104', '0000-00-00 00:00:00', '2019-09-26 00:00:00', '', '1845793', 'tas hitamku', 'TAS KOPER', 'yes', 'Leather - Nabati', 'Leather - Chrome', 'Pcs', '1', 300000),
-(36, 'CB-201934860517', '2019-09-26 00:00:00', '2019-10-03 00:00:00', '', '9510842', 'Tas gunung2', 'TAS TRAVEL', 'yes', 'Leather - Chrome', 'Polyester', 'Pcs', '5', 300000);
+(36, 'CB-201934860517', '2019-09-26 00:00:00', '2019-10-03 00:00:00', '', '9510842', 'Tas gunung2', 'TAS TRAVEL', 'yes', 'Leather - Chrome', 'Polyester', 'Pcs', '5', 300000),
+(37, 'CB-201934860517', '2019-09-26 00:00:00', '2019-11-13 00:00:00', '', '9510842', 'Tas gunung2', 'TAS TRAVEL', 'yes', 'Leather - Chrome', 'Polyester', 'Pcs', '1', 300000);
 
 --
 -- Trigger `tb_barang_keluar`
@@ -125,8 +126,31 @@ CREATE TABLE `tb_barang_masuk` (
 --
 
 INSERT INTO `tb_barang_masuk` (`id_transaksi`, `tanggal`, `lokasi`, `kode_barang`, `nama_barang`, `jenis_tas`, `type_sleting`, `bag_depan`, `bag_belakang`, `satuan`, `jumlah`, `total_harga`) VALUES
-('CB-201934860517', '2019-09-26', '', '9510842', 'Tas gunung2', 'TAS TRAVEL', 'yes', 'Leather - Chrome', 'Polyester', 'Pcs', '2', 300000),
+('CB-201924075398', '', '', '9508134', 'tas hitamku2222', 'TAS KANVAS', 'no', 'Leather - Nabati', 'Leather - Chrome', 'Pcs', '6', 300000),
+('CB-201925971084', '', '', '3576201', 'tas hitamku45345', 'TAS KOPER', 'no', 'Leather - Nabati', 'Leather - Chrome', 'Pcs', '2', 500000),
+('CB-201934860517', '2019-09-26', '', '9510842', 'Tas gunung2', 'TAS TRAVEL', 'yes', 'Leather - Chrome', 'Polyester', 'Pcs', '1', 300000),
+('CB-201941027658', '', '', '7163928', 'tas hitamku', 'TAS LAPTOP', 'no', 'Leather - Nabati', 'Leather - Chrome', 'Pcs', '2', 500000),
 ('CB-201972389104', '', '', '1845793', 'tas hitamku', 'TAS KOPER', 'yes', 'Leather - Nabati', 'Leather - Chrome', 'Pcs', '1', 300000);
+
+--
+-- Trigger `tb_barang_masuk`
+--
+DELIMITER $$
+CREATE TRIGGER `TG_STOK_BAHAN` AFTER INSERT ON `tb_barang_masuk` FOR EACH ROW BEGIN
+ UPDATE tb_bahan SET stok=stok-2
+ WHERE nama_bahan=NEW.bag_depan;
+
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `TG_STOK_BAHAN2` BEFORE INSERT ON `tb_barang_masuk` FOR EACH ROW BEGIN
+ UPDATE tb_bahan SET stok=stok-2
+ WHERE nama_bahan=NEW.bag_belakang;
+
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -174,22 +198,27 @@ CREATE TABLE `tb_product_template` (
   `unit_depan` int(11) NOT NULL,
   `unit_belakang` int(11) NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `deskripsi` varchar(255) NOT NULL
+  `deskripsi` varchar(255) NOT NULL,
+  `total_harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tb_product_template`
 --
 
-INSERT INTO `tb_product_template` (`id_template`, `id_template_product`, `nama_template`, `jenis_tas`, `type_sleting`, `bag_depan`, `bag_belakang`, `unit_depan`, `unit_belakang`, `photo`, `deskripsi`) VALUES
-(18, 'TP-31827', 'taskuq', 'TAS RANSEL', 'yes', 'Leather - Suede', 'Leather - Chrome', 1, 1, 'default.jpg', 'hahahahahaha'),
-(19, 'TP-67928', 'taskuq', 'TAS LAPTOP', 'yes', 'Leather - Nabati', 'Leather - Chrome', 1, 1, '', 'hahahahahaha'),
-(20, 'TP-28701', 'tasku', 'TAS SEKOLAH', 'no', 'Leather - Nabati', 'Leather - Chrome', 1, 1, '', 'hahahahahaha'),
-(21, 'TP-41296', 'tasku', 'TAS RANSEL', 'yes', 'Leather - Chrome', 'Polyester', 1, 1, '', 'qweqwe'),
-(22, 'TP-14765', 'tasku', 'TAS RANSEL', 'yes', 'Leather - PullUp', 'Leather - Chrome', 1, 1, 'default.jpg', 'qweqwe'),
-(23, 'TP-14765', 'tasku', 'TAS RANSEL', 'yes', 'Leather - PullUp', 'Leather - Chrome', 1, 1, 'default.jpg', 'qweqwe'),
-(24, 'TP-14765', 'tasku', 'TAS RANSEL', 'yes', 'Leather - PullUp', 'Leather - Chrome', 1, 1, 'default.jpg', 'qweqwe'),
-(25, 'TP-87253', 'taskuq89', 'TAS RANSEL', 'no', 'Leather - Nabati', 'Leather - Nabati', 3, 4, '', 'zzzzzzzzzzzz');
+INSERT INTO `tb_product_template` (`id_template`, `id_template_product`, `nama_template`, `jenis_tas`, `type_sleting`, `bag_depan`, `bag_belakang`, `unit_depan`, `unit_belakang`, `photo`, `deskripsi`, `total_harga`) VALUES
+(18, 'TP-31827', 'taskuq', 'TAS RANSEL', 'yes', 'Leather - Suede', 'Leather - Chrome', 1, 1, 'default.jpg', 'hahahahahaha', 0),
+(19, 'TP-67928', 'taskuq', 'TAS LAPTOP', 'yes', 'Leather - Nabati', 'Leather - Chrome', 1, 1, '', 'hahahahahaha', 0),
+(20, 'TP-28701', 'tasku', 'TAS SEKOLAH', 'no', 'Leather - Nabati', 'Leather - Chrome', 1, 1, '', 'hahahahahaha', 0),
+(21, 'TP-41296', 'tasku', 'TAS RANSEL', 'yes', 'Leather - Chrome', 'Polyester', 1, 1, '', 'qweqwe', 0),
+(22, 'TP-14765', 'tasku', 'TAS RANSEL', 'yes', 'Leather - PullUp', 'Leather - Chrome', 1, 1, 'default.jpg', 'qweqwe', 0),
+(23, 'TP-14765', 'tasku', 'TAS RANSEL', 'yes', 'Leather - PullUp', 'Leather - Chrome', 1, 1, 'default.jpg', 'qweqwe', 0),
+(24, 'TP-14765', 'tasku', 'TAS RANSEL', 'yes', 'Leather - PullUp', 'Leather - Chrome', 1, 1, 'default.jpg', 'qweqwe', 0),
+(25, 'TP-87253', 'taskuq89', 'TAS RANSEL', 'no', 'Leather - Nabati', 'Leather - Nabati', 3, 4, '', 'zzzzzzzzzzzz', 0),
+(26, 'TP-01564', 'tasku', 'TAS KANVAS', 'no', 'Leather - Chrome', 'Leather - Chrome', 5, 4, '', 'hahahahahaha', 0),
+(27, 'TP-51734', 'tasku', 'TAS RANSEL', 'yes', 'Leather - Nabati', 'Leather - PullUp', 5, 4, '', 'qweqwe', 56565613),
+(28, 'TP-80241', 'taskuq', 'TAS KANVAS', 'no', 'Leather - Chrome', 'Leather - Nabati', 5, 4, '', 'hahahahahaha', 21600),
+(29, 'TP-26579', 'tasku', 'TAS KOPER', 'no', 'Leather - PullUp', 'Leather - Nabati', 5, 4, '', 'hahahahahaha', 21600);
 
 -- --------------------------------------------------------
 
@@ -431,7 +460,7 @@ ALTER TABLE `tb_bahan`
 -- AUTO_INCREMENT untuk tabel `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_product`
@@ -443,7 +472,7 @@ ALTER TABLE `tb_product`
 -- AUTO_INCREMENT untuk tabel `tb_product_template`
 --
 ALTER TABLE `tb_product_template`
-  MODIFY `id_template` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_template` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_satuan`

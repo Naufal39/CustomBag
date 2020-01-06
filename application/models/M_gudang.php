@@ -112,6 +112,13 @@ class M_gudang extends CI_Model
     $this->db->update($tabel);
   }
 
+  public function mengurangistok($tabel,$id,$stok)
+  {
+    $this->db->set("stok","stok - $stok");
+    $this->db->where('id',$id);
+    $this->db->update($tabel);
+  }
+
   public function update_password($tabel,$where,$data)
   {
     $this->db->where($where);

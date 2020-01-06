@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Web Gudang | Data Barang Masuk</title>
+  <title>Kasir | Data Barang Masuk</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -18,6 +18,11 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/web_admin/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/gudang/datetimepicker/css/bootstrap-datetimepicker.css">
+  
+  <script src="<?= base_url('assets/gudang/jquery-2.1.4.min.js') ?>"></script>
+	<script src="<?= base_url('assets/gudang/datatables/js/jquery.dataTables.min.js') ?>"></script>
+	<script src="<?= base_url('assets/gudang/datatables/js/dataTables.bootstrap.js') ?>"></script>
+  <script src="<?= base_url('assets/gudang/maskMoney/jquery.maskMoney.min.js') ?>"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -33,11 +38,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url('gudang')?>" class="logo">
+    <a href="<?php echo base_url('admin')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>gudang</b>LTE</span>
+      <span class="logo-lg"><b>Admin</b>LTE</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -76,10 +81,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= base_url('gudang/profile')?>" class="btn btn-default btn-flat"><i class="fa fa-cogs" aria-hidden="true"></i> Profile</a>
+                  <a href="<?= base_url('kasir/profile')?>" class="btn btn-default btn-flat"><i class="fa fa-cogs" aria-hidden="true"></i> Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= base_url('gudang/sigout')?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+                  <a href="<?= base_url('kasir/sigout')?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
                 </div>
               </li>
             </ul>
@@ -113,7 +118,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="<?= base_url('gudang')?>">
+          <a href="<?= base_url('kasir')?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <!-- <i class="fa fa-angle-left pull-right"></i> -->
@@ -133,10 +138,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <!-- <li class="active"><a href="<?= base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>-->
-            <!-- <li><a href="<?= base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>  -->
-            <li><a href="<?php echo base_url('gudang/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Template Tas </a></li>
-            <li><a href="<?php echo base_url('gudang/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Stok Bahan</a></li>
+            <li class="active"><a href="<?= base_url('kasir/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Pesanan Masuk</a></li>
+            <!-- <li><a href="<?= base_url('kasir/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li> -->
           </ul>
         </li>
         <li class="treeview ">
@@ -147,19 +150,19 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('gudang/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
-            <li><a href="<?= base_url('gudang/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('gudang/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Stok Bahan</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
+            <li><a href="<?= base_url('kasir/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Pesanan Keluar</a></li>
+            <!-- <li><a href="<?= base_url('kasir/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li> -->
           </ul>
         </li>
         <li>
         <li class="header">LABELS</li>
         <li>
-          <a href="<?php echo base_url('gudang/profile')?>">
+          <a href="<?php echo base_url('kasir/profile')?>">
          <i class="fa fa-cogs" aria-hidden="true"></i> <span>Profile</span></a>
         </li>
         <li>
-          <a href="<?php echo base_url('gudang/users')?>">
+          <a href="<?php echo base_url('kasir/users')?>">
          <i class="fa fa-fw fa-users" aria-hidden="true"></i> <span>Users</span></a>
         </li>
       </ul>
@@ -172,7 +175,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Input Template Tas
+        Input Data Barang Masuk
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -190,12 +193,12 @@
             <!-- general form elements -->
           <div class="box box-primary" style="width:94%;">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Template Tas</h3>
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Pesanan Masuk</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('gudang/proses_template_masuk_insert')?>" method="post" enctype="multipart/form-data">
+            <form action="<?=base_url('kasir/proses_databarang_masuk_insert')?>" role="form" method="post">
 
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:91%">
@@ -213,122 +216,118 @@
 
               <div class="box-body">
                 <div class="form-group">
-                  <label for="id_transaksi" style="margin-left:220px;display:inline;">ID Template</label>
-                  <input type="text" name="id_template_product" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="TP-<?=random_string('numeric', 5);?>">
+                <?php foreach($list_tmp as $d){ ?>
+                  <label for="id_transaksi" style="margin-left:220px;display:inline;">ID Transaksi</label>
+                  <input type="text" name="id_transaksi" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="CB-<?=date("Y");?><?=random_string('numeric', 8);?>">
                 </div>
-                <!-- <div class="form-group">
+                <div class="form-group">
                   <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal</label>
                   <input type="text" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
-                </div> -->
+                </div>
                 <div class="form-group" style="display:inline-block;">
-                  <label for="nama_Barang" style="margin-left:220px;display:inline;">Nama Barang</label>
-                  <input type="text" name="nama_template" style="margin-left:220px;width:34%;display:inline;" class="form-control" id="nama_Barang" placeholder="Nama Barang">
+                  <label for="kode_barang" style="width:87%;margin-left: 12px;">Kode Barang / Barcode</label>
+                  <input type="text" name="kode_barang" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_barang" readonly="readonly" value="<?=random_string('numeric', 7);?>">
+                </div>
+                <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Nama Barang</label>
+                  <input type="text" name="nama_barang" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Nama Barang" value="<?=$d->nama_template?>">
               </div>
-              <br>
-              <br>
-              <div class="form-group" style="display:inline-block;">
+              
+               <div class="form-group" style="display:inline-block;">
                   <label for="satuan" style="width:73%;">Jenis Tas</label>
                   <select class="form-control" name="jenis_tas" style="width:90%;margin-right: 67px;">
                     <option value="" selected="">-- Pilih --</option>
                     <?php foreach($list_tas as $t){ ?>
+                        <?php if($d->jenis_tas == $t->nama_tas) {?>
+                          <option value="<?=$d->jenis_tas?>" selected=""><?=$t->nama_tas?></option>
+                        <?php } else{?>
                     <option value="<?=$t->nama_tas?>"><?=$t->nama_tas?></option>
+                    <?php } ?>
                     <?php } ?>
                   </select>
               </div>
+              <div class="box-body">
               <div class="form-group" style="display:inline-block;">
-                   <label for="nama_Barang" style="width:73%;">Type Sleting</label>
-                   <select class="form-control" name="bag_depan" style="width:90%;margin-right: 67px;" id="sleting">
-                    <option value="" selected="">-- Pilih --</option>
-                    <option value="YES">YES</option>
-                    <option value="NO">NO</option>
-                  </select>
+                  <label for="nama_Barang" style="width:73%;">Type Sleting</label>
+                  <input type="text" name="type_sleting" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Type Sleting" value="<?=$d->type_sleting ?>">
               </div>
-
-              <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:73%;">Harga</label>
-                <input type="number" name="harga" style="" class="form-control" id="jumlah" id="harga_sleting">
-              </div>
-              <div>
-              
               <div class="form-group" style="display:inline-block;">
                   <label for="satuan" style="width:73%;">Bagian Depan</label>
                   <select class="form-control" name="bag_depan" style="width:90%;margin-right: 67px;">
                     <option value="" selected="">-- Pilih --</option>
-                    <?php foreach($list_bahan as $d){ ?>
-                    <option value="<?=$d->nama_bahan?>"><?=$d->nama_bahan?></option>
+                    <?php foreach($list_bahan as $lb){ ?>
+                      <?php if($d->bag_depan == $lb->nama_bahan) {?>
+                        <option value="<?=$lb->nama_bahan?>" selected=""><?=$d->bag_depan?></option>
+                      <?php } ?>
+                      <option value="<?=$lb->nama_bahan?>"><?=$lb->nama_bahan?></option>
                     <?php } ?>
                   </select>
               </div>
               <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:73%;">Harga</label>
-                <input type="text" name="harga" style="" class="form-control" id="txt1" onkeyup="sum();">
-              </div>
-              <div class="form-group" style="display:inline-block;">
                 <label for="jumlah" style="width:73%;margin-left:33px;">Unit Depan</label>
-                <input type="text" name="unit_depan" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="txt2" onkeyup="sum();">
+                <input type="text" name="unit_depan" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="txt2" value="<?=$d->unit_depan?>">
               </div>
-              <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:73%;">Harga Total</label>
-                <input type="text" name="harga" style="" class="form-control" id="txt3" onkeyup="sum();">
-              </div>
-
               <br>
               <div class="form-group" style="display:inline-block;">
                   <label for="satuan" style="width:73%;">Bagian Belakang</label>
                   <select class="form-control" name="bag_belakang" style="width:90%;margin-right: 67px;">
                     <option value="" selected="">-- Pilih --</option>
-                    <?php foreach($list_bahan as $d){ ?>
-                    <option value="<?=$d->nama_bahan?>"><?=$d->nama_bahan?></option>
+                    <?php foreach($list_bahan as $lb){ ?>
+                      <?php if($d->bag_depan == $lb->nama_bahan) {?>
+                        <option value="<?=$lb->nama_bahan?>" selected=""><?=$d->bag_belakang?></option>
+                      <?php } ?>
+                      <option value="<?=$lb->nama_bahan?>"><?=$lb->nama_bahan?></option>
                     <?php } ?>
                   </select>
               </div>
               <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:73%;">Harga</label>
-                <input type="text" name="harga" style="" class="form-control" id="txt4" onkeyup="sum();">
-              </div>
-              <div class="form-group" style="display:inline-block;">
                 <label for="jumlah" style="width:73%;margin-left:33px;">Unit Belakang</label>
-                <input type="text" name="unit_belakang" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="txt5" onkeyup="sum();">
+                <input type="text" name="unit_belakang" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="txt2" value="<?=$d->unit_belakang?>">
               </div>
-              <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:73%;">Harga Total</label>
-                <input type="text" name="harga" style="" class="form-control" id="txt6" onkeyup="sum();">
-              </div> <br>
-              <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:83%;">Harga Barang</label>
-                <input type="text" name="harga" style="" class="form-control" id="txt8" onkeyup="sum();">
               </div>
-               <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:73%;margin-left:47px;">Harga Jual</label>
-                <input type="number" name="total_harga" style="width:90%;margin-left:47px;" class="form-control" id="total_harga">
-              </div>
-              <div class="form-group" style="display:inline-block;margin-left:47px;">
-                  <label for="deskripsi" style="width:73%;">Deskripsi</label>
-                  <input type="text" name="deskripsi" style="width:90%;margin-right:67px;" class="form-control" id="deskripsi" placeholder="Deskripsi">
-              </div>
-              <div>
-                
-                <!-- <div class="form-group" style="display:inline-block;">
-                  <label for="photo" style="width:73%;">Insert Photo</label>
-                  <input type="file" name="photo">
-              </div> -->
+              <div class="box-body">
               
-             
-             <div class="box-body">
-            <div class="form-group" style="display:inline-block;">
-              <button type="reset" class="btn btn-basic" name="btn_reset" style="width:90px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                <div class="form-group" style="display:inline-block;">
+                  <label for="satuan" style="width:73%;">Satuan</label>
+                  <select class="form-control" name="satuan" style="width:110%;margin-right: 18px;">
+                    <option value="" selected="">-- Pilih --</option>
+                   <?php foreach($list_satuan as $s){?>
+                      <?php if($d->satuan == $s->nama_satuan){?>
+                    <option value="<?=$d->satuan?>" selected=""><?=$d->satuan?></option>
+                    <?php }else{?>
+                    <option value="<?=$s->kode_satuan?>"><?=$s->nama_satuan?></option>
+                      <?php } ?>
+                      <?php } ?>
+                  </select>
+              </div>
+              <div class="form-group" style="display:inline-block;">
+                <label for="jumlah" style="width:73%;margin-left:33px;">Jumlah</label>
+                <input type="number" name="jumlah" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah" autocomplete="off" onkeyup="sum();" 
+				        	onkeyup="subTotal(this.value)">
             </div>
+            <div class="form-group" style="display:inline-block;">
+                  <label for="nama_Barang" style="width:73%;">Total Harga</label>
+                  <input type="text" name="total_harga" style="width:90%;margin-right: px;" class="form-control" id="total" value="<?=$d->total_harga?>" placeholder="Total Harga" onkeyup="sum();">
+              </div>
+              <div class="form-group" style="display:inline-block;">
+              <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+            </div>
+              </div>
+              <div class="box-body">
+              </div>
+              
+            
               <!-- /.box-body -->
               <div class="box-footer" style="width:93%;">
                 <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <a type="button" class="btn btn-info" style="width:14%;margin-right:29%" href="<?=base_url('gudang/tabel_barangmasuk')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
+                <a type="button" class="btn btn-info" style="width:14%;margin-right:29%" href="<?=base_url('kasir/tabel_barangmasuk')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
                 <button type="submit" style="width:20%" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
               </div>
             </form>
           </div>
           </div>
           <!-- /.box -->
-
+          <?php } ?>
           <!-- Form Element sizes -->
 
           <!-- /.box -->
@@ -584,41 +583,202 @@
         minView: 2,
         maxView: 4,
       });
-
-      function sum() {
-      var txtFirstNumberValue = document.getElementById('txt1').value;
-      var txtSecondNumberValue = document.getElementById('txt2').value;
-      var txtSatuNumberValue = document.getElementById('txt4').value;
-      var txtDuaNumberValue = document.getElementById('txt5').value;
-
-      // if(document.getElementById('sleting').value == 'YES'){
-      //   var jual = result + result1 + 5000;
-      // document.getElementById('txt8').value = jual;
-      // }
-
-      var result = parseInt(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
-      var result1 = parseInt(txtSatuNumberValue) * parseInt(txtDuaNumberValue);
-      if (!isNaN(result)) {
-         document.getElementById('txt3').value = result;
-         }
-      if (!isNaN(result1)) {
-         document.getElementById('txt6').value = result1;
-         }
-
-         if(document.getElementById('sleting').value == 'YES'){
-            var jual = result + result1 + 5000;
-            document.getElementById('txt8').value = jual;
-          }
-
-          if(document.getElementById('sleting').value == 'NO'){
-            var jual = result + result1 + 5000;
-            document.getElementById('txt8').value = jual;
-          }
-
-      var total = jual + (jual * (20/100));
-      document.getElementById('total_harga').value = total;
-      }
-      
   </script>
+
+  <script type="text/javascript">
+
+  function sum(){
+    var txtFirstNumberValue = document.getElementById('jumlah').value;
+    var txtSecondNumberValue = document.getElementById('total').value;
+
+    var result = parseInt(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
+     if (!isNaN(result)) {
+         document.getElementById('total').value = result;
+         }
+  }
+
+	function showBarang(str) 
+	{
+
+	    if (str == "") {
+	        $('#nama_bahan').val('');
+	        $('#harga_bahan').val('');
+	        $('#jumlah').val('');
+	        $('#sub_total').val('');
+	        $('#reset').hide();
+	        return;
+	    } else { 
+	      if (window.XMLHttpRequest) {
+	          // code for IE7+, Firefox, Chrome, Opera, Safari
+	           xmlhttp = new XMLHttpRequest();
+	      } else {
+	          // code for IE6, IE5
+	          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	      }
+	      xmlhttp.onreadystatechange = function() {
+	           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	              document.getElementById("barang").innerHTML = 
+	              xmlhttp.responseText;
+	          }
+	      }
+	      xmlhttp.open("GET", "<?= base_url(
+	        '/kasir/getbarang') ?>/"+str,true);
+	      xmlhttp.send();
+	    }
+	}
+
+	function subTotal(jumlah)
+	{
+
+		var harga = $('#harga_bahan').val().replace(".", "").replace(".", "");
+
+		$('#sub_total').val(convertToRupiah(harga*jumlah));
+	}
+
+	function convertToRupiah(angka)
+	{
+
+	    var rupiah = '';    
+	    var angkarev = angka.toString().split('').reverse().join('');
+	    
+	    for(var i = 0; i < angkarev.length; i++) 
+	      if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+	    
+	    return rupiah.split('',rupiah.length-1).reverse().join('');
+	
+	}
+
+	var table;
+    $(document).ready(function() {
+
+      showKembali($('#bayar').val());
+
+      table = $('#table_transaksi').DataTable({ 
+        paging: false,
+        "info": false,
+        "searching": false,
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' 
+        // server-side processing mode.
+        
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?= site_url('kasir/ajax_list_transaksi')?>",
+            "type": "POST"
+        },
+
+        //Set column definition initialisation properties.
+        "columnDefs": [
+        { 
+          "targets": [ 0,1,2,3,4,5,6 ], //last column
+          "orderable": false, //set not orderable
+        },
+        ],
+
+      });
+    });
+
+    function reload_table()
+    {
+
+      table.ajax.reload(null,false); //reload datatable ajax 
+    
+    }
+
+    function addbarang()
+    {
+        var id_barang = $('#id_bahan').val();
+        var jumlah = $('#jumlah').val();
+        if (id_bahan == '') {
+          $('#id_bahan').focus();
+        }else if(jumlah == ''){
+          $('#jumlah').focus();
+        }else{
+       // ajax adding data to database
+          $.ajax({
+            url : "<?= site_url('kasir/addbarang')?>",
+            type: "POST",
+            data: $('#form_transaksi').serialize(),
+            dataType: "JSON",
+            success: function(data)
+            {
+               //reload ajax table
+               reload_table();
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error adding data');
+            }
+        });
+
+          showTotal();
+          showKembali($('#bayar').val());
+          //mereset semua value setelah btn tambah ditekan
+          $('.reset').val('');
+        };
+    }
+
+    function deletebarang(id,sub_total)
+    {
+        // ajax delete data to database
+          $.ajax({
+            url : "<?= site_url('kasir/deletebarang')?>/"+id,
+            type: "POST",
+            dataType: "JSON",
+            success: function(data)
+            {
+               reload_table();
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error deleting data');
+            }
+        });
+
+          var ttl = $('#total').val().replace(".", "");
+
+          $('#total').val(convertToRupiah(ttl-sub_total));
+
+          showKembali($('#bayar').val());
+    }
+
+    function showTotal()
+    {
+
+    	var total = $('#total').val().replace(".", "").replace(".", "");
+
+    	var sub_total = $('#sub_total').val().replace(".", "").replace(".", "");
+
+    	$('#total').val(convertToRupiah((Number(total)+Number(sub_total))));
+
+  	}
+
+  	//maskMoney
+	$('.uang').maskMoney({
+		thousands:'.', 
+		decimal:',', 
+		precision:0
+	});
+
+	function showKembali(str)
+  	{
+	    var total = $('#total').val().replace(".", "").replace(".", "");
+	    var bayar = str.replace(".", "").replace(".", "");
+	    var kembali = bayar-total;
+
+	    $('#kembali').val(convertToRupiah(kembali));
+
+	    if (kembali >= 0) {
+	      $('#selesai').removeAttr("disabled");
+	    }else{
+	      $('#selesai').attr("disabled","disabled");
+	    };
+
+	    if (total == '0') {
+	      $('#selesai').attr("disabled","disabled");
+	    };
+  	}
+
+	</script>
   </body>
   </html>

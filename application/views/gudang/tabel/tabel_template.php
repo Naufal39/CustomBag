@@ -207,8 +207,8 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Bahan</th>
-                  <th>Stok</th>
+                  <th>Nama</th>
+                  <th>Jenis tas</th>
                   <th>Update</th>
                   <th>Delete</th>
                 </tr>
@@ -221,10 +221,10 @@
                     <td><?=$no?></td>
                     <td><?=$lt->nama_template?></td>
                     <td><?=$lt->jenis_tas?></td>
-                    <td><img src="<?=base_url('assets/images/'.$lt->photo)?>" style="width:300px; height:150"></td>
+                    <!-- <td><img src="<?=base_url('assets/images/'.$lt->photo)?>" style="width:300px; height:150"></td> -->
                     
-                    <!-- <td><a type="button" class="btn btn-info"  href="<?=base_url('gudang/update_satuan/'.$dd->id_bahan)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('gudang/delete_satuan/'.$dd->id_bahan)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td> -->
+                    <td><a type="button" class="btn btn-info"  href="<?=base_url('gudang/barang_masuk_template_update/'.$lt->id_template)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('gudang/delete_template/'.$lt->id_template)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>

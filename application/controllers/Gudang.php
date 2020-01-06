@@ -61,6 +61,7 @@ class Gudang extends CI_Controller{
       $total_harga  = $this->input->post('total_harga',TRUE);
       // $photo  = $this->input->post('photo',TRUE);
       $deskripsi  = $this->input->post('deskripsi',TRUE);
+      $total_harga  = $this->input->post('total_harga',TRUE);
 
       $data = array(
             'id_template_product' => $id_template_product,
@@ -73,6 +74,7 @@ class Gudang extends CI_Controller{
             'unit_belakang' => $unit_belakang,
             // 'photo' => $photo,
             'deskripsi' => $deskripsi,
+            'total_harga' => $total_harga
       );
       if (!empty($_FILES['photo']['name'])) {
 			$upload = $this->_do_upload();
@@ -115,6 +117,88 @@ class Gudang extends CI_Controller{
               'avatar'    => $this->M_gudang->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
             );
     $this->load->view('gudang/tabel/tabel_template',$data);
+  }
+
+  public function barang_masuk_template()
+  {
+    $uri = $this->uri->segment(3);
+    $where = array( 'id_template_product' => $uri);
+    $data['list_tmp'] = $this->M_gudang->get_data('tb_product_template',$where);
+    $data['list_satuan'] = $this->M_gudang->select('tb_satuan');
+    $data['list_bahan']  = $this->M_gudang->select('tb_bahan');
+    $data['list_tas']     = $this->M_gudang->select('tb_tas');
+    $data['avatar'] = $this->M_gudang->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('kasir/form_barangmasuk/form_insert_from_template',$data);
+  }
+
+  public function barang_masuk_template_update($id_template)
+  {
+    $uri = $this->uri->segment(3);
+    $where = array( 'id_template' => $uri);
+    $data['list_tmpl'] = $this->M_gudang->get_data('tb_product_template',$where);
+    $data['list_satuan'] = $this->M_gudang->select('tb_satuan');
+    $data['list_bahan']  = $this->M_gudang->select('tb_bahan');
+    $data['list_tas']     = $this->M_gudang->select('tb_tas');
+    $data['avatar'] = $this->M_gudang->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('gudang/form_barangmasuk/form_template_update',$data);
+  }
+
+  public function proses_template_update()
+  {
+    $this->form_validation->set_rules('id_template_product','ID Template Product','required');
+    $this->form_validation->set_rules('nama_template','Nama Template','required');
+    $this->form_validation->set_rules('jenis_tas','Jenis Tas','required');
+    $this->form_validation->set_rules('bag_depan','Bagian Depan','required');
+    $this->form_validation->set_rules('unit_depan','Unit Depan','required');
+    $this->form_validation->set_rules('bag_belakang','Bagian Belakang','required');
+    $this->form_validation->set_rules('unit_belakang','Unit Belakang','required');
+    $this->form_validation->set_rules('deskripsi','Deskripsi','required');
+
+    if($this->form_validation->run() ==  true)
+    {
+      $id_template   = $this->input->post('id_template' ,TRUE);
+      $id_template_product = $this->input->post('id_template_product',TRUE);
+      $nama_template= $this->input->post('nama_template',TRUE);
+      $jenis_tas    = $this->input->post('jenis_tas',TRUE);
+      $type_sleting = $this->input->post('type_sleting',TRUE);
+      $bag_depan    = $this->input->post('bag_depan',TRUE);
+      $unit_depan    = $this->input->post('unit_depan',TRUE);
+      $bag_belakang = $this->input->post('bag_belakang',TRUE);
+      $unit_belakang = $this->input->post('unit_belakang',TRUE);
+      $total_harga  = $this->input->post('total_harga',TRUE);
+      // $photo  = $this->input->post('photo',TRUE);
+      $deskripsi  = $this->input->post('deskripsi',TRUE);
+      $total_harga  = $this->input->post('total_harga',TRUE);
+
+      $where = array('id_template' => $id_template);
+      $data = array(
+            'id_template' => $id_template,
+            'id_template_product' => $id_template_product,
+            'nama_template'  => $nama_template,
+            'jenis_tas'    => $jenis_tas,
+            'type_sleting' => $type_sleting,
+            'bag_depan'    => $bag_depan,
+            'unit_depan' => $unit_depan,
+            'bag_belakang' => $bag_belakang,
+            'unit_belakang' => $unit_belakang,
+            // 'photo' => $photo,
+            'deskripsi' => $deskripsi,
+            'total_harga' => $total_harga
+      );
+      $this->M_gudang->update('tb_product_template',$data,$where);
+
+      $this->session->set_flashdata('msg_berhasil','Data barang Berhasil Di Update');
+      redirect(base_url('gudang/tabel_template'));
+    }else {
+      $this->load->view('gudang/form_barangmasuk/form_template_update');
+    }
+  }
+
+  public function delete_template($id_template)
+  {
+    $where = array('id_template' => $id_template);
+    $this->M_gudang->delete('tb_product_template',$where);
+    redirect(base_url('gudang/tabel_template'));
   }
 
   public function tabel_barangmasuk()
@@ -165,6 +249,8 @@ class Gudang extends CI_Controller{
       $type_sleting = $this->input->post('type_sleting',TRUE);
       $bag_depan    = $this->input->post('bag_depan',TRUE);
       $bag_belakang = $this->input->post('bag_belakang',TRUE);
+      $unit_depan   = $this->input->post('unit_depan',TRUE);
+      $unit_belakang= $this->input->post('unit_belakang',TRUE);
       $satuan       = $this->input->post('satuan',TRUE);
       $jumlah       = $this->input->post('jumlah',TRUE);
       $total_harga  = $this->input->post('total_harga',TRUE);
@@ -178,6 +264,8 @@ class Gudang extends CI_Controller{
             'type_sleting' => $type_sleting,
             'bag_depan'    => $bag_depan,
             'bag_belakang' => $bag_belakang,
+            'unit_depan'   => $unit_depan,
+            'unit_depan'   => $unit_belakang,
             'satuan'       => $satuan,
             'jumlah'       => $jumlah,
             'total_harga'  => $total_harga
@@ -215,6 +303,8 @@ class Gudang extends CI_Controller{
       $type_sleting = $this->input->post('type_sleting',TRUE);
       $bag_depan    = $this->input->post('bag_depan',TRUE);
       $bag_belakang = $this->input->post('bag_belakang',TRUE);
+      $unit_depan   = $this->input->post('unit_depan',TRUE);
+      $unit_belakang= $this->input->post('unit_belakang',TRUE);
       $satuan       = $this->input->post('satuan',TRUE);
       $jumlah       = $this->input->post('jumlah',TRUE);
       $total_harga  = $this->input->post('total_harga',TRUE);
@@ -229,6 +319,8 @@ class Gudang extends CI_Controller{
             'type_sleting' => $type_sleting,
             'bag_depan'    => $bag_depan,
             'bag_belakang' => $bag_belakang,
+            'unit_depan'   => $unit_depan,
+            'unit_belakang'=> $unit_belakang,
             'satuan'       => $satuan,
             'jumlah'       => $jumlah,
             'total_harga'  => $total_harga
@@ -348,6 +440,8 @@ class Gudang extends CI_Controller{
     $data['avatar'] = $this->M_gudang->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('gudang/perpindahan_barang/form_update',$data);
   }
+
+   
 
   public function proses_data_keluar()
   {

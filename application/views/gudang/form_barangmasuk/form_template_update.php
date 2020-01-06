@@ -195,7 +195,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('gudang/proses_template_masuk_insert')?>" method="post" enctype="multipart/form-data">
+            <form action="<?=base_url('gudang/proses_template_update')?>" method="post" enctype="multipart/form-data">
 
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:91%">
@@ -213,8 +213,10 @@
 
               <div class="box-body">
                 <div class="form-group">
+                <?php foreach($list_tmpl as $d){ ?>
+                <input type="hidden" name="id_template" value="<?$d->id_template?>">
                   <label for="id_transaksi" style="margin-left:220px;display:inline;">ID Template</label>
-                  <input type="text" name="id_template_product" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="TP-<?=random_string('numeric', 5);?>">
+                  <input type="text" name="id_template_product" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->id_template_product?>">
                 </div>
                 <!-- <div class="form-group">
                   <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal</label>
@@ -222,7 +224,7 @@
                 </div> -->
                 <div class="form-group" style="display:inline-block;">
                   <label for="nama_Barang" style="margin-left:220px;display:inline;">Nama Barang</label>
-                  <input type="text" name="nama_template" style="margin-left:220px;width:34%;display:inline;" class="form-control" id="nama_Barang" placeholder="Nama Barang">
+                  <input type="text" name="nama_template" style="margin-left:220px;width:34%;display:inline;" class="form-control" id="nama_Barang" placeholder="Nama Barang" value="<?=$d->nama_template?>">
               </div>
               <br>
               <br>
@@ -236,17 +238,14 @@
                   </select>
               </div>
               <div class="form-group" style="display:inline-block;">
-                   <label for="nama_Barang" style="width:73%;">Type Sleting</label>
-                   <select class="form-control" name="bag_depan" style="width:90%;margin-right: 67px;" id="sleting">
-                    <option value="" selected="">-- Pilih --</option>
-                    <option value="YES">YES</option>
-                    <option value="NO">NO</option>
-                  </select>
+                  <label for="nama_Barang" style="width:73%;">Type Sleting</label>
+                  <input type="text" name="type_sleting" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Type Sleting">
               </div>
+              
 
               <div class="form-group" style="display:inline-block;">
                 <label for="jumlah" style="width:73%;">Harga</label>
-                <input type="number" name="harga" style="" class="form-control" id="jumlah" id="harga_sleting">
+                <input type="number" name="harga" style="" class="form-control" id="jumlah">
               </div>
               <div>
               
@@ -328,7 +327,7 @@
           </div>
           </div>
           <!-- /.box -->
-
+           <?php } ?>
           <!-- Form Element sizes -->
 
           <!-- /.box -->
@@ -591,11 +590,6 @@
       var txtSatuNumberValue = document.getElementById('txt4').value;
       var txtDuaNumberValue = document.getElementById('txt5').value;
 
-      // if(document.getElementById('sleting').value == 'YES'){
-      //   var jual = result + result1 + 5000;
-      // document.getElementById('txt8').value = jual;
-      // }
-
       var result = parseInt(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
       var result1 = parseInt(txtSatuNumberValue) * parseInt(txtDuaNumberValue);
       if (!isNaN(result)) {
@@ -605,15 +599,8 @@
          document.getElementById('txt6').value = result1;
          }
 
-         if(document.getElementById('sleting').value == 'YES'){
-            var jual = result + result1 + 5000;
-            document.getElementById('txt8').value = jual;
-          }
-
-          if(document.getElementById('sleting').value == 'NO'){
-            var jual = result + result1 + 5000;
-            document.getElementById('txt8').value = jual;
-          }
+      var jual = result + result1;
+      document.getElementById('txt8').value = jual;
 
       var total = jual + (jual * (20/100));
       document.getElementById('total_harga').value = total;

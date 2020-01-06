@@ -41,6 +41,15 @@ class Kasir extends CI_Controller{
     $this->load->view('kasir/tabel/tabel_barangmasuk',$data);
   }
 
+    public function tabel_template()
+  {
+    $data = array(
+              'list_temp' => $this->M_kasir->select('tb_product_template'),
+              'avatar'    => $this->M_kasir->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
+            );
+    $this->load->view('kasir/tabel/tabel_template',$data);
+  }
+
   public function update_barang($id_transaksi)
   {
     $where = array('id_transaksi' => $id_transaksi);
@@ -81,6 +90,8 @@ class Kasir extends CI_Controller{
       $type_sleting = $this->input->post('type_sleting',TRUE);
       $bag_depan    = $this->input->post('bag_depan',TRUE);
       $bag_belakang = $this->input->post('bag_belakang',TRUE);
+      $unit_depan   = $this->input->post('unit_depan',TRUE);
+      $unit_belakang= $this->input->post('unit_belakang',TRUE);
       $satuan       = $this->input->post('satuan',TRUE);
       $jumlah       = $this->input->post('jumlah',TRUE);
       $total_harga  = $this->input->post('total_harga',TRUE);
@@ -94,6 +105,8 @@ class Kasir extends CI_Controller{
             'type_sleting' => $type_sleting,
             'bag_depan'    => $bag_depan,
             'bag_belakang' => $bag_belakang,
+            'unit_depan'    => $unit_depan,
+            'unit_belakang' => $unit_belakang,
             'satuan'       => $satuan,
             'jumlah'       => $jumlah,
             'total_harga'  => $total_harga
